@@ -1,6 +1,6 @@
 using System;
 
-namespace YS.CMS.WebApp.Models
+namespace YS.CMS.Apps.WebApp.Models
 {
     public class ErrorViewModel
     {

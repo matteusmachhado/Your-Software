@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using YS.CMS.WebApp.Models;
+using YS.CMS.Apps.WebApp.Models;
 
-namespace YS.CMS.WebApp.Controllers
+namespace YS.CMS.Apps.WebApp.Controllers
 {
     public class HomeController : Controller
     {
