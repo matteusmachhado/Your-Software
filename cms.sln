@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Apps", "4-Apps", "{0BDB308C-EEE8-406E-840C-DB01B15D1CD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Apps.WebApp", "3-SRC\4-Apps\YS.CMS.WebApp\YS.CMS.Apps.WebApp.csproj", "{3ACF5370-ADD8-476B-AAEA-31B86AA856CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Apps.WebApp", "3-SRC\4-Apps\YS.CMS.Apps.WebApp\YS.CMS.Apps.WebApp.csproj", "{3ACF5370-ADD8-476B-AAEA-31B86AA856CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{9E03558A-56A0-4BB1-A1A8-D6DB3AB80F7A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Services.Api", "3-SRC\2-Services\YS.CMS.Api\YS.CMS.Services.Api.csproj", "{0ECFC82B-E005-4CCE-952C-2F5CDBB7C339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Services.Api", "3-SRC\2-Services\YS.CMS.Services.Api\YS.CMS.Services.Api.csproj", "{0ECFC82B-E005-4CCE-952C-2F5CDBB7C339}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Services.ApiAuthProvider", "3-SRC\2-Services\YS.CMS.ApiAuthProvider\YS.CMS.Services.ApiAuthProvider.csproj", "{3A4B6668-8E08-4BBA-8905-7B3602ACF4C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Services.ApiAuthProvider", "3-SRC\2-Services\YS.CMS.Services.ApiAuthProvider\YS.CMS.Services.ApiAuthProvider.csproj", "{3A4B6668-8E08-4BBA-8905-7B3602ACF4C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Common", "0-Common", "{BA6007F0-3777-4CA7-8C61-B1317EFF7926}"
 EndProject
@@ -19,11 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domain", "1-Domain", "{50
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infra", "3-Infra", "{20235241-B2AE-4B94-B2C7-A4C3DEFF95EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Domain.Entities", "3-SRC\1-Domain\YS.CMS.Entities\YS.CMS.Domain.Entities.csproj", "{96A06D65-1B00-48DA-BA72-2C3AC6EC6173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Domain.Entities", "3-SRC\1-Domain\YS.CMS.Domain.Entities\YS.CMS.Domain.Entities.csproj", "{96A06D65-1B00-48DA-BA72-2C3AC6EC6173}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.Data", "3-SRC\3-Infra\YS.CMS.Data\YS.CMS.Infra.Data.csproj", "{D8FDCDEB-8244-4C3F-ABA2-1EF07435DECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.Data", "3-SRC\3-Infra\YS.CMS.Infra.Data\YS.CMS.Infra.Data.csproj", "{D8FDCDEB-8244-4C3F-ABA2-1EF07435DECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.CMS.Infra.IoC", "3-SRC\3-Infra\YS.CMS.IoC\YS.CMS.Infra.IoC.csproj", "{7A455B76-0833-4586-ABBF-F38B7F7F7469}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.CMS.Infra.IoC", "3-SRC\3-Infra\YS.CMS.Infra.IoC\YS.CMS.Infra.IoC.csproj", "{7A455B76-0833-4586-ABBF-F38B7F7F7469}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
