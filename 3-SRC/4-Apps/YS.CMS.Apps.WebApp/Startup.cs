@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YS.CMS.Apps.WebApp.Extensions;
 
 namespace YS.CMS.Apps.WebApp
 {
@@ -26,7 +27,8 @@ namespace YS.CMS.Apps.WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDependencyInjecion();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
