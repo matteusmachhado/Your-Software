@@ -5,7 +5,7 @@ namespace YS.CMS.Infra.IoC
 {
     public abstract class NativeInjector
     {
-        private string connnectionString = "Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123456;";
+        private readonly string connnectionString = "Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123456;";
         
         protected DbContextOptionsBuilder AddDbContextOptionsBuilder()
         {

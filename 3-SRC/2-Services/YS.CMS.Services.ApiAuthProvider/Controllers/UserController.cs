@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Entities;
-using YS.CMS.Infra.Security;
+using YS.CMS.Infra.Security.Handler;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Services.ApiAuthProvider.Controllers
@@ -13,9 +13,9 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
     {
         private readonly UserHandler _userHandler;
 
-        public UserController(UserManager<User> userManager)
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
-            _userHandler = new UserHandler(userManager);
+            _userHandler = new UserHandler(userManager, signInManager);
         }
 
         [HttpPost]

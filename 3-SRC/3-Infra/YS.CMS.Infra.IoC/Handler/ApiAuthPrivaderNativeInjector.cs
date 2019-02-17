@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using YS.CMS.Domain.Entities;
-using YS.CMS.Infra.Data;
-using YS.CMS.Infra.HttpClients;
+using YS.CMS.Infra.Security;
+using Microsoft.EntityFrameworkCore;
 
 namespace YS.CMS.Infra.IoC.Handler
 {
@@ -12,11 +11,8 @@ namespace YS.CMS.Infra.IoC.Handler
     {
         public override void RegisterServices(IServiceCollection services)
         {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddHttpClient<ApiAuthProviderClient>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:5000/api/");
+            services.AddDbContext<CMSAuthContext>(options => {
+                options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123456;");
             });
 
             services.AddIdentity<User, IdentityRole>(options =>
@@ -25,9 +21,7 @@ namespace YS.CMS.Infra.IoC.Handler
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
-            }).AddEntityFrameworkStores<CMSContext>();
-
-            services.AddDbContext<CMSContext>(optionsAction => AddDbContextOptionsBuilder());
+            }).AddEntityFrameworkStores<CMSAuthContext>();
         }
     }
 }

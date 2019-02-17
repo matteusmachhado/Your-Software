@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using YS.CMS.Infra.Data;
+using YS.CMS.Infra.HttpClients;
 
 namespace YS.CMS.Infra.IoC.Handler
 {
@@ -7,7 +9,12 @@ namespace YS.CMS.Infra.IoC.Handler
     {
         public override void RegisterServices(IServiceCollection services)
         {
-            services.AddDbContext<CMSContext>(optionsAction => AddDbContextOptionsBuilder());
+            services.AddHttpClient<ApiAuthProviderClient>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:5000/api/");
+            });
+
+            services.AddDbContext<CMSRepositoryContext>(optionsAction => AddDbContextOptionsBuilder());
         }
     }
 }
