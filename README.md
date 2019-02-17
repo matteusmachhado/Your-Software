@@ -20,4 +20,7 @@ CMS - Sistema de Gerenciamento de Conteúdo
 3.2 - YS.CMS.Api    				=> AspNetCore2.1
 3.2 - YS.CMS.ApiAuthProvider    	=> AspNetCore2.1
 3.3 - YS.CMS.Data 					=> ClassLibrary2.1
+3.3 - YS.CMS.HttpClients 			=> ClassLibrary2.1
+3.3 - YS.CMS.IoC      			    => ClassLibrary2.1
+3.3 - YS.CMS.Security      			=> ClassLibrary2.1
 3.4 - YS.CMS.WebApp 				=> AspNetCore2.1
