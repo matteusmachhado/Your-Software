@@ -27,9 +27,9 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
 
                 if(result.Succeeded)
                 {
-                    return Ok(model);
+                    return Ok(result);
                 }
-                return BadRequest();
+                // sem reotrno por segurança.
             }
             return BadRequest();
         }

@@ -14,7 +14,7 @@ namespace YS.CMS.Infra.IoC.Handler
                 client.BaseAddress = new Uri("http://localhost:5000/api/");
             });
 
-            services.AddDbContext<CMSRepositoryContext>(optionsAction => AddDbContextOptionsBuilder());
+            services.AddDbContext<CMSRepositoryContext>(AddDbContextOptionsBuilder);
         }
     }
 }

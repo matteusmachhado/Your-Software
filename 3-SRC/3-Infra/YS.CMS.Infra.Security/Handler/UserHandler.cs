@@ -16,26 +16,27 @@ namespace YS.CMS.Infra.Security.Handler
             _signInManager = signInManager;
         }
 
-        public async Task<UserManagerResultModel> CreateUser(RegisterModel model)
+        public async Task<IdentityResult> CreateUser(RegisterModel model)
         {
             var user = new User { UserName = model.Login };
             var result = await _userManager.CreateAsync(user, model.Password);
+
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return new UserManagerResultModel { Succeeded = true };
+                return result;
             }
-            return new UserManagerResultModel { Succeeded = false };
+            return result;
         }
 
-        public async Task<UserManagerResultModel> LoginUser(LoginModel model)
+        public async Task<SignInResult> LoginUser(LoginModel model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Login, model.Password, false, false);
             if (result.Succeeded)
             {
-                return new UserManagerResultModel() { Succeeded = true };
+                return result;
             }
-            return new UserManagerResultModel() { Succeeded = false };
+            return result;
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Domain.Entities;
 using YS.CMS.Infra.Security;
-using Microsoft.EntityFrameworkCore;
 
 namespace YS.CMS.Infra.IoC.Handler
 {
@@ -11,9 +9,7 @@ namespace YS.CMS.Infra.IoC.Handler
     {
         public override void RegisterServices(IServiceCollection services)
         {
-            services.AddDbContext<CMSAuthContext>(options => {
-                options.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123456;");
-            });
+            services.AddDbContext<CMSAuthContext>(AddDbContextOptionsBuilder); 
 
             services.AddIdentity<User, IdentityRole>(options =>
             {

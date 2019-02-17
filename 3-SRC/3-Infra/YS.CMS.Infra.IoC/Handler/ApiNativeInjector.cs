@@ -7,7 +7,7 @@ namespace YS.CMS.Infra.IoC.Handler
     {
         public override void RegisterServices(IServiceCollection services)
         {
-            services.AddDbContext<CMSRepositoryContext>(optionsAction => AddDbContextOptionsBuilder());
+            services.AddDbContext<CMSRepositoryContext>(AddDbContextOptionsBuilder);
         }
     }
 }
