@@ -1,14 +1,27 @@
 ﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Apps.WebApp.Models;
+using YS.CMS.Infra.HttpClients;
+using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApiAuthProviderClient _api;
+
+        public HomeController(ApiAuthProviderClient api)
         {
-            return View();
+            _api = api;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var model = new RegisterModel() { Login = "Mateus", Password = "123", ConfirmPassword = "123" };
+
+            await _api.PostRegisterAsync(model);
+            return RedirectToAction("About", "Home");
         }
 
         public IActionResult About()
