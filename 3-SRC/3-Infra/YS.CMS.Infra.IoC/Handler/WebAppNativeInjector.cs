@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Infra.Data;
 
 namespace YS.CMS.Infra.IoC.Handler

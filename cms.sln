@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.IoC", "3-SRC\3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.CMS.Infra.Security", "3-SRC\3-Infra\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj", "{072C8660-BD42-42D5-A976-B1AE5E08ECE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.CMS.Infra.HttpClients", "3-SRC\3-Infra\YS.CMS.Infra.HttpClients\YS.CMS.Infra.HttpClients.csproj", "{6A389300-2E40-41CA-B4DF-B16979871041}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{072C8660-BD42-42D5-A976-B1AE5E08ECE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{072C8660-BD42-42D5-A976-B1AE5E08ECE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{072C8660-BD42-42D5-A976-B1AE5E08ECE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A389300-2E40-41CA-B4DF-B16979871041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A389300-2E40-41CA-B4DF-B16979871041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A389300-2E40-41CA-B4DF-B16979871041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A389300-2E40-41CA-B4DF-B16979871041}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{D8FDCDEB-8244-4C3F-ABA2-1EF07435DECC} = {20235241-B2AE-4B94-B2C7-A4C3DEFF95EE}
 		{7A455B76-0833-4586-ABBF-F38B7F7F7469} = {20235241-B2AE-4B94-B2C7-A4C3DEFF95EE}
 		{072C8660-BD42-42D5-A976-B1AE5E08ECE2} = {20235241-B2AE-4B94-B2C7-A4C3DEFF95EE}
+		{6A389300-2E40-41CA-B4DF-B16979871041} = {20235241-B2AE-4B94-B2C7-A4C3DEFF95EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D383006-611D-4FD2-B7C8-7808DB371705}

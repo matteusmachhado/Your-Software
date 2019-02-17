@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YS.CMS.Infra.Data\YS.CMS.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
