@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Apps.WebApp.Models;
 using YS.CMS.Infra.HttpClients;
-using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ApiAuthProviderClient _api;
@@ -15,15 +15,12 @@ namespace YS.CMS.Apps.WebApp.Controllers
         {
             _api = api;
         }
-
-        public async Task<IActionResult> Index()
+        
+        public IActionResult Index()
         {
-            var model = new RegisterModel() { Login = "Mateus", Password = "123", ConfirmPassword = "123" };
-
-            await _api.PostRegisterAsync(model);
-            return RedirectToAction("About", "Home");
+            return View();
         }
-
+        
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

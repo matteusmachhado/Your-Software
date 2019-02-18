@@ -9,11 +9,11 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class RegisterController : ControllerBase
     {
         private readonly UserHandler _userHandler;
 
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public RegisterController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userHandler = new UserHandler(userManager, signInManager);
         }
@@ -23,7 +23,7 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _userHandler.CreateUser(model);
+                var result = await _userHandler.RegisterUser(model);
 
                 if(result.Succeeded)
                 {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using YS.CMS.Infra.Data;
 using YS.CMS.Infra.HttpClients;
@@ -9,6 +10,12 @@ namespace YS.CMS.Infra.IoC.Handler
     {
         public override void RegisterServices(IServiceCollection services)
         {
+            services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.LoginPath = "/User/Login";
+                });
+
             services.AddHttpClient<ApiAuthProviderClient>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:5000/api/");
