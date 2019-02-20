@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using YS.CMS.Infra.HttpClients;
+using YS.CMS.Infra.Clients.HTTP;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Apps.WebApp.Controllers

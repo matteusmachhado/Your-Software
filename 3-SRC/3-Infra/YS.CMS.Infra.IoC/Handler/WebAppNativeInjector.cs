@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using YS.CMS.Infra.Clients.HTTP;
 using YS.CMS.Infra.Data;
-using YS.CMS.Infra.HttpClients;
 
 namespace YS.CMS.Infra.IoC.Handler
 {

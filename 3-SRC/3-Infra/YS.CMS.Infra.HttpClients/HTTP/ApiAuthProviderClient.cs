@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using YS.CMS.Infra.HttpClients.Model;
+using YS.CMS.Infra.Clients.Model;
 using YS.CMS.Infra.Security.Model;
 
-namespace YS.CMS.Infra.HttpClients
+namespace YS.CMS.Infra.Clients.HTTP
 {
     public class ApiAuthProviderClient
     {

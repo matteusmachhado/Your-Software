@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Apps.WebApp.Models;
-using YS.CMS.Infra.HttpClients;
+using YS.CMS.Infra.Clients.HTTP;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {

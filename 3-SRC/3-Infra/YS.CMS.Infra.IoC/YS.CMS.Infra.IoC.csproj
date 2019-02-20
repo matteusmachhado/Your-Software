@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\YS.CMS.Infra.Data\YS.CMS.Infra.Data.csproj" />
-    <ProjectReference Include="..\YS.CMS.Infra.HttpClients\YS.CMS.Infra.HttpClients.csproj" />
+    <ProjectReference Include="..\YS.CMS.Infra.HttpClients\YS.CMS.Infra.Clients.csproj" />
   </ItemGroup>
 
 </Project>

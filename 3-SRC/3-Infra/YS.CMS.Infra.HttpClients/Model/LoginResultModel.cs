@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace YS.CMS.Infra.HttpClients.Model
+namespace YS.CMS.Infra.Clients.Model
 {
     public class LoginResultModel
     {

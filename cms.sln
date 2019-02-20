@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.Data", "3-SRC\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.IoC", "3-SRC\3-Infra\YS.CMS.Infra.IoC\YS.CMS.Infra.IoC.csproj", "{7A455B76-0833-4586-ABBF-F38B7F7F7469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.CMS.Infra.Security", "3-SRC\3-Infra\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj", "{072C8660-BD42-42D5-A976-B1AE5E08ECE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.Security", "3-SRC\3-Infra\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj", "{072C8660-BD42-42D5-A976-B1AE5E08ECE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YS.CMS.Infra.HttpClients", "3-SRC\3-Infra\YS.CMS.Infra.HttpClients\YS.CMS.Infra.HttpClients.csproj", "{6A389300-2E40-41CA-B4DF-B16979871041}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YS.CMS.Infra.Clients", "3-SRC\3-Infra\YS.CMS.Infra.HttpClients\YS.CMS.Infra.Clients.csproj", "{6A389300-2E40-41CA-B4DF-B16979871041}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
