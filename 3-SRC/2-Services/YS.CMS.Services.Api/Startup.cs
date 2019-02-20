@@ -21,7 +21,7 @@ namespace YS.CMS.Services.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDependencyInjecion();
+            services.AddDependencyInjecion(Configuration.GetConnectionString("CMSDB"));
 
         }
 

@@ -7,8 +7,7 @@ namespace YS.CMS.Apps.WebApp.Extensions
     {
         public static void AddDependencyInjecion(this IServiceCollection services)
         {
-            var injector = new WebAppNativeInjector();
-            injector.RegisterServices(services);
+            WebAppNativeInjector.RegisterServices(services);
         }
     }
 }

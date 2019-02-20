@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using YS.CMS.Infra.Clients.HTTP;
@@ -6,9 +7,9 @@ using YS.CMS.Infra.Data;
 
 namespace YS.CMS.Infra.IoC.Handler
 {
-    public class WebAppNativeInjector : NativeInjector
+    public static class WebAppNativeInjector
     {
-        public override void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(IServiceCollection services)
         {
             services
                 .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -20,8 +21,6 @@ namespace YS.CMS.Infra.IoC.Handler
             {
                 client.BaseAddress = new Uri("http://localhost:5000/api/");
             });
-
-            services.AddDbContext<CMSRepositoryContext>(AddDbContextOptionsBuilder);
         }
     }
 }

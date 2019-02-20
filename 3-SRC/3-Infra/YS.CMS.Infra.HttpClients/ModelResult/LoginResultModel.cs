@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
+﻿using System.Net;
 
-namespace YS.CMS.Infra.Clients.Model
+namespace YS.CMS.Infra.Clients.ModelResult
 {
     public class LoginResultModel
     {

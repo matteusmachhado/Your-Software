@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using YS.CMS.Infra.Clients.Model;
+using YS.CMS.Infra.Clients.ModelResult;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Infra.Clients.HTTP

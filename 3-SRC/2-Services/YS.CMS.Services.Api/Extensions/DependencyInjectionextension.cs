@@ -5,10 +5,9 @@ namespace YS.CMS.Services.Api.Extensions
 {
     public static class DependencyInjectionextension
     {
-        public static void AddDependencyInjecion(this IServiceCollection service)
+        public static void AddDependencyInjecion(this IServiceCollection service, string connnectionString)
         {
-            var injector = new ApiNativeInjector();
-            injector.RegisterServices(service);
+            ApiNativeInjector.RegisterServices(service, connnectionString);
         }
     }
 }

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\1-Domain\YS.CMS.Domain.Entities\YS.CMS.Domain.Entities.csproj" />
+    <ProjectReference Include="..\..\1-Domain\YS.CMS.Domain.Entities\YS.CMS.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,10 +5,9 @@ namespace YS.CMS.Services.ApiAuthProvider.Extensions
 {
     public static class DependencyInjectionExtension
     {
-        public static void AddDependencyInjecion(this IServiceCollection services)
+        public static void AddDependencyInjecion(this IServiceCollection services, string connnectionString)
         {
-            var injector = new ApiAuthPrivaderNativeInjector();
-            injector.RegisterServices(services);
+            ApiAuthPrivaderNativeInjector.RegisterServices(services, connnectionString);
         }
     }
 }

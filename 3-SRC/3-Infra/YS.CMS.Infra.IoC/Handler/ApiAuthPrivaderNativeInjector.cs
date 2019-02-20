@@ -1,15 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Domain.Entities;
 using YS.CMS.Infra.Security;
 
 namespace YS.CMS.Infra.IoC.Handler
 {
-    public class ApiAuthPrivaderNativeInjector : NativeInjector
+    public static class ApiAuthPrivaderNativeInjector 
     {
-        public override void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(IServiceCollection services, string connnectionString)
         {
-            services.AddDbContext<CMSAuthContext>(AddDbContextOptionsBuilder); 
+            services.AddDbContext<CMSAuthContext>(options => 
+            {
+                options.UseSqlServer(connnectionString);
+            }); 
 
             services.AddIdentity<User, IdentityRole>(options =>
             {
