@@ -6,7 +6,7 @@ using YS.CMS.Infra.Clients.HTTP;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {
-    [Authorize]
+    // [Authorize]
     public class HomeController : Controller
     {
         private readonly ApiAuthProviderClient _api;
