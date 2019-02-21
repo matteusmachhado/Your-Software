@@ -1,7 +1,7 @@
-const path = require('path');
+﻿const path = require('path');
 
 module.exports = {
-  entry: './3-SRC/4-Apps/YS.CMS.Apps.WebApp/wwwroot/ts/app.ts',
+  entry: path.resolve(__dirname, 'wwwroot/src/ts/app.ts'),
   module: {
     rules: [
       {
@@ -16,6 +16,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '3-SRC/4-Apps/YS.CMS.Apps.WebApp/wwwroot/dist')
+    path: path.resolve(__dirname, 'wwwroot/dist')
   }
 };	

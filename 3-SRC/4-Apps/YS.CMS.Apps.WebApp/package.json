@@ -1,6 +1,6 @@
 {
-  "name": "cms",
   "version": "1.0.0",
+  "name": "YS.CMS.Apps.WebApp",
   "description": "CMS - Sistema de Gerenciamento de Conte�do",
   "main": "index.js",
   "scripts": {
