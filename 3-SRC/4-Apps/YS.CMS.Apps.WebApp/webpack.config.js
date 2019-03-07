@@ -1,7 +1,7 @@
 ﻿const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'wwwroot/src/ts/app.ts'),
+    entry: { 'main': './wwwroot/src/ts/app.ts' },
   module: {
     rules: [
       {
@@ -14,8 +14,9 @@ module.exports = {
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
-  output: {
+    output: {
+    path: path.resolve(__dirname, 'wwwroot/dist'),
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'wwwroot/dist')
+    publicPath: 'dist/'
   }
 };	
