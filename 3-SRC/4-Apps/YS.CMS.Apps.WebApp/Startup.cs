@@ -39,11 +39,7 @@ namespace YS.CMS.Apps.WebApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true,
-                    HotModuleReplacementEndpoint = "/dist/__webpack_hmr"
-                });
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions { HotModuleReplacement = true });
             }
             else
             {
