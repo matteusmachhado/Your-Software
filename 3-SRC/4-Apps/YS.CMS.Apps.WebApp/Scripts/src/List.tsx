@@ -1,6 +1,6 @@
-﻿import React from "react";
+﻿import * as React from 'react';
 
-export default class List extends React.Component {
+export default class List extends React.Component{
     render() {
         return (
             <ul>

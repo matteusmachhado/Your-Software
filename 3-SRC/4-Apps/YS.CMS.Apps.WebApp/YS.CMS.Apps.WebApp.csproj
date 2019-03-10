@@ -2,13 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-  </PropertyGroup>
+    </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="wwwroot\ts\**" />
     <Content Remove="wwwroot\ts\**" />
     <EmbeddedResource Remove="wwwroot\ts\**" />
     <None Remove="wwwroot\ts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\src\app.tsx" />
+    <None Remove="Scripts\src\List.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +32,11 @@
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Dashboard\Views\" />
-    <Folder Include="wwwroot\js\dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\List.tsx" />
   </ItemGroup>
 
 </Project>

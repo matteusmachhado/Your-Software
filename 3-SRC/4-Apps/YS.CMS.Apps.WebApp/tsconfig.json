@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./Scripts/dist",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "es5",
+    "jsx": "react",
+    "lib": [ "es6", "dom" ]
+  },
+  "include": [
+    "./Scripts/src/**/*"
+  ]
+}

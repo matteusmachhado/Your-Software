@@ -1,17 +1,25 @@
 ﻿const path = require('path');
 
 module.exports = {
-    entry: { main: './wwwroot/js/src/app.js' },
+    mode: 'development',
+    target: 'web',
+    entry: { main: './Scripts/src/app.tsx' },
     output: {
-        path: path.resolve(__dirname, './wwwroot/js/dist'),
+        path: path.resolve(__dirname, './wwwroot/dist'),
         filename: 'bundle.js',
         publicPath: 'dist/'
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.jsx', '.js']
     },
     module: {
         rules: [
+            {
+                test: /\.tsx{0,1}$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: { configFile: 'tsconfig.json' }
+            },
             {
                 test: /\.(js|jsx)/,
                 exclude: /node_modules/,
