@@ -13,7 +13,8 @@
 
   <ItemGroup>
     <None Remove="Scripts\src\app.tsx" />
-    <None Remove="Scripts\src\List.tsx" />
+    <None Remove="Scripts\src\components-render.tsx" />
+    <None Remove="Scripts\src\components\List.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,11 +33,13 @@
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Dashboard\Views\" />
+    <Folder Include="Scripts\src\models\" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\components-render.tsx" />
     <TypeScriptCompile Include="Scripts\src\app.tsx" />
-    <TypeScriptCompile Include="Scripts\src\List.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\List.tsx" />
   </ItemGroup>
 
 </Project>

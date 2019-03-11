@@ -1,11 +1,8 @@
-﻿import * as React from "react";
-import * as reactDOM from "react-dom";
-import List from "./List";
-
+﻿import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
+import { AppComponents } from './components-render';
 
-var Teste = hot(module)(List);
+var App = hot(module)(AppComponents);
 
-var App = () => <Teste />;
-
-reactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<App />, document.querySelector('#app'));
