@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
 
-interface State {
-    Items: Array<ItemLits>;
+type State  = {
+    Items: Array<ItemLits>
 }
-interface Props {
-
+type Props = {
+    NomeComponent: string
 }
 
 class ItemLits
@@ -26,13 +26,15 @@ class ItemLits
 
 }
 
+const getInitialState = (props: Props): State =>  {
+    return {
+        Items: Array<ItemLits>()
+    }
+}
+
 export default class List extends React.Component<Props, State> {
 
-    constructor(props: Props)
-    {
-        super(props);
-        this.state = { Items: Array<ItemLits>() }
-    }
+    state = getInitialState(this.props);
     
     componentDidMount()
     {
@@ -46,7 +48,9 @@ export default class List extends React.Component<Props, State> {
 
     render() {
         return (
-            <ul>
+            <div>
+                <h1> { this.props.NomeComponent } </h1>
+                <ul>
                 {
                     this.state.Items.map(function (item, i) {
                         return (
@@ -54,7 +58,8 @@ export default class List extends React.Component<Props, State> {
                         );
                     })
                 }
-            </ul>
-        );
+                </ul>
+            </div>
+        )
     }
 }

@@ -4,6 +4,6 @@ import List from "./components/List";
 
 export const AppComponents: React.StatelessComponent<{}> = () => {
     return (
-        <List />
+        <List NomeComponent="Lista de Testes . . ." />
     );
 }
