@@ -18,6 +18,7 @@ namespace YS.CMS.Apps.WebApp.Controllers
         
         public IActionResult Index()
         {
+            ViewData["Title"] = "WebApp";
             return View();
         }
         

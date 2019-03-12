@@ -15,7 +15,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx{0,1}$/,
+                test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/,
                 options: { configFile: 'tsconfig.json' }

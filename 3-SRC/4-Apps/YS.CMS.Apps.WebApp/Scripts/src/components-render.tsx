@@ -1,8 +1,7 @@
-﻿import * as React from "react";
-import * as reactDOM from "react-dom";
+﻿import React, { StatelessComponent } from "react";
 import List from "./components/List";
 
-export const AppComponents: React.StatelessComponent<{}> = () => {
+export const AppComponents: StatelessComponent<{}> = () => {
     return (
         <List NomeComponent="Lista de Testes . . ." />
     );

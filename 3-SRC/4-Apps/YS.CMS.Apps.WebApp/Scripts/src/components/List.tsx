@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React, { Component } from 'react';
 
 type State  = {
     Items: Array<ItemLits>
@@ -32,7 +32,7 @@ const getInitialState = (props: Props): State =>  {
     }
 }
 
-export default class List extends React.Component<Props, State> {
+export default class List extends Component<Props, State> {
 
     state = getInitialState(this.props);
     
