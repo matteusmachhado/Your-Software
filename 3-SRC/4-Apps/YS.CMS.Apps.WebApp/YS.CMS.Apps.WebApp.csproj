@@ -33,7 +33,9 @@
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Dashboard\Views\" />
+    <Folder Include="Scripts\dist\" />
     <Folder Include="Scripts\src\models\" />
+    <Folder Include="wwwroot\dist\" />
   </ItemGroup>
 
   <ItemGroup>

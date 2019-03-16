@@ -1,7 +1,17 @@
 ﻿const path = require('path');
 
+let plugins = [];
+
+// >_ Ambiente: development | production |
+let modeEnvironment = 'development';
+
+if (process.env.NODE_ENV == 'production')
+{
+    modeEnvironment = 'production';
+}
+
 module.exports = {
-    mode: 'development',
+    mode: modeEnvironment,
     target: 'web',
     entry: { main: './Scripts/src/app.tsx' },
     output: {
@@ -31,5 +41,7 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: plugins
+
 };

@@ -40,7 +40,8 @@ export default class List extends Component<Props, State> {
     {
         let Items: Array<ItemLits> = [
             new ItemLits(1, "Item"),
-            new ItemLits(2, "Item")
+            new ItemLits(2, "Item"),
+            new ItemLits(3, "Item"),
         ];
 
         this.setState({ Items: Items });
