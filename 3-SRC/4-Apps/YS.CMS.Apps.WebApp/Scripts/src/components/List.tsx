@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import './css/List.css'; 
 
 type State  = {
     Items: Array<ItemLits>
@@ -42,6 +43,7 @@ export default class List extends Component<Props, State> {
             new ItemLits(1, "Item"),
             new ItemLits(2, "Item"),
             new ItemLits(3, "Item"),
+            new ItemLits(4, "Item"),
         ];
 
         this.setState({ Items: Items });
@@ -50,12 +52,12 @@ export default class List extends Component<Props, State> {
     render() {
         return (
             <div>
-                <h1> { this.props.NomeComponent } </h1>
-                <ul>
+                <h1 className="h1Titulo"> {this.props.NomeComponent} </h1>
+                <ul className="list-group">
                 {
                     this.state.Items.map(function (item, i) {
                         return (
-                            <li key={item.getId} > {item.getValue} </li>      
+                            <li key={item.getId} className="list-group-item"> {item.getValue} </li>      
                         );
                     })
                 }

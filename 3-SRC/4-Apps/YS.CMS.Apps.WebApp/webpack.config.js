@@ -1,13 +1,30 @@
 ﻿const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-let plugins = [];
+let plugins = [];  
 
-// >_ Ambiente: development | production |
+plugins.push(new MiniCssExtractPlugin({
+    filename: "style.css" 
+}));
+
+// >_ Ambiente: development (build-deafult) | production
 let modeEnvironment = 'development';
 
 if (process.env.NODE_ENV == 'production')
 {
     modeEnvironment = 'production';
+
+    plugins.push(new optimizeCSSAssetsPlugin({
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: {
+            discardComments: {
+                removeAll: false
+            }
+        },
+        canPrint: true
+    }));   
 }
 
 module.exports = {
@@ -22,6 +39,18 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.jsx', '.js']
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                test: /\.js(\?.*)?$/i,
+                uglifyOptions: {
+                    output: {
+                        comments: false,
+                    },
+                },
+            }),
+        ],
+    },
     module: {
         rules: [
             {
@@ -31,7 +60,7 @@ module.exports = {
                 options: { configFile: 'tsconfig.json' }
             },
             {
-                test: /\.(js|jsx)/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -39,6 +68,14 @@ module.exports = {
                         "presets": ["@babel/preset-env", "@babel/preset-react"]
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'css-hot-loader',
+                     MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ]
             }
         ]
     },
