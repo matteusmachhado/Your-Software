@@ -1,5 +1,7 @@
 ﻿import React, { Component } from 'react';
-import './css/List.css'; 
+import './css/List.css';
+import 'bootstrap/js/dist/modal.js';
+import jsImage from './../images/js-flat.png';
 
 type State  = {
     Items: Array<ItemLits>
@@ -36,6 +38,12 @@ const getInitialState = (props: Props): State =>  {
 export default class List extends Component<Props, State> {
 
     state = getInitialState(this.props);
+
+    constructor(prop: Props)
+    {
+        super(prop);
+        this.showMensagem = this.showMensagem.bind(this);
+    }
     
     componentDidMount()
     {
@@ -49,10 +57,16 @@ export default class List extends Component<Props, State> {
         this.setState({ Items: Items });
     }
 
+    showMensagem() : void
+    {
+        console.log("Minha mensagem. . .");
+    }
+
     render() {
         return (
             <div>
-                <h1 className="h1Titulo"> {this.props.NomeComponent} </h1>
+                <h1 className="h1Titulo" onClick={this.showMensagem}> {this.props.NomeComponent} </h1>
+                <img src={jsImage} />
                 <ul className="list-group">
                 {
                     this.state.Items.map(function (item, i) {

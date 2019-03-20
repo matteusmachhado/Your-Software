@@ -1,39 +1,66 @@
 ﻿const path = require('path');
+const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var ImageminPlugin = require('imagemin-webpack-plugin').default;
+
+
+// Analise grafica do tamhanho do bundle
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let plugins = [];  
 
-plugins.push(new MiniCssExtractPlugin({
-    filename: "style.css" 
-}));
+let isModeDev = process.env.NODE_ENV !== 'production';
 
-// >_ Ambiente: development (build-deafult) | production
-let modeEnvironment = 'development';
+plugins.push(
+    new MiniCssExtractPlugin({
+        filename: isModeDev ? "style.css" : 'style.min.css'
+    })
+);
 
-if (process.env.NODE_ENV == 'production')
+// >_ Definindo escopo global no webpack...
+plugins.push(
+    new webpack.ProvidePlugin({
+        $: 'jquery/dist/jquery.js',
+        jQuery: 'jquery/dist/jquery.js'
+    })
+);
+
+// >_ Analisando graficamente bundle 
+// plugins.push(
+   // new BundleAnalyzerPlugin()
+// );
+
+if (!isModeDev)
 {
-    modeEnvironment = 'production';
-
-    plugins.push(new optimizeCSSAssetsPlugin({
-        cssProcessor: require('cssnano'),
-        cssProcessorOptions: {
-            discardComments: {
-                removeAll: false
-            }
-        },
+    plugins.push(
+        new optimizeCSSAssetsPlugin({
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: {
+                discardComments: {
+                    removeAll: true
+                }
+            },
         canPrint: true
-    }));   
+        })
+    );
+    // >_ optimizando imagens (png|svg|jpg|gif)
+    plugins.push(
+        new ImageminPlugin()
+    );
 }
 
 module.exports = {
-    mode: modeEnvironment,
+    // >_ Ambiente: development (build-deafult) | production
+    mode: isModeDev ? 'development' : 'production',
     target: 'web',
-    entry: { main: './Scripts/src/app.tsx' },
+    entry: {
+        main: './Scripts/src/app.tsx'
+    },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
-        filename: 'bundle.js',
+        filename: isModeDev ? 'bundle.js' : 'bundle.min.js',
         publicPath: 'dist/'
     },
     resolve: {
@@ -42,7 +69,6 @@ module.exports = {
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
-                test: /\.js(\?.*)?$/i,
                 uglifyOptions: {
                     output: {
                         comments: false,
@@ -50,6 +76,23 @@ module.exports = {
                 },
             }),
         ],
+        namedChunks: true, // >_ persistir nome dos bunbles
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "initial",
+                }
+                // >_ Extrair para somente um bunble do jquery, por exemplo.
+                //jquery: {
+                //    test: new RegExp('node_modules' + '\\' + path.sep + 'jquery.*'),
+                //    chunks: "initial",
+                //    name: "jquery",
+                //    enforce: true
+                //},
+            },
+        }
     },
     module: {
         rules: [
@@ -76,9 +119,17 @@ module.exports = {
                      MiniCssExtractPlugin.loader,
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader'
             }
         ]
     },
-    plugins: plugins
+    plugins: plugins,
+
+    stats: {
+        children: false
+    }
 
 };

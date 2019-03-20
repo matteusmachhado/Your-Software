@@ -12,9 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="d.ts" />
     <None Remove="Scripts\src\app.tsx" />
     <None Remove="Scripts\src\components-render.tsx" />
     <None Remove="Scripts\src\components\List.tsx" />
+    <None Remove="Scripts\src\images\index.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,9 +41,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\declare-modules-images-d.ts" />
     <TypeScriptCompile Include="Scripts\src\components-render.tsx" />
     <TypeScriptCompile Include="Scripts\src\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\List.tsx" />
+    <TypeScriptCompile Include="Scripts\src\images\index.ts" />
   </ItemGroup>
 
 </Project>
