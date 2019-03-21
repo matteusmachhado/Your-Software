@@ -341,3 +341,4 @@ ASALocalRun/
 healthchecksdb
 /3-SRC/4-Apps/YS.CMS.Apps.WebApp/Scripts/dist
 /3-SRC/4-Apps/YS.CMS.Apps.WebApp/wwwroot/dist
+/3-SRC/4-Apps/YS.CMS.Apps.WebApp/package-lock.json
