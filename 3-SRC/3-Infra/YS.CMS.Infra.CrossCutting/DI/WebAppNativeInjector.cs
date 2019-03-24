@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using YS.CMS.Infra.CrossCutting.Clients.HTTP.Controllers;
 using System;
-using YS.CMS.Infra.Clients.HTTP;
-using YS.CMS.Infra.Data;
 
-namespace YS.CMS.Infra.IoC.Handler
+namespace YS.CMS.Infra.CrossCutting.DI
 {
     public static class WebAppNativeInjector
     {

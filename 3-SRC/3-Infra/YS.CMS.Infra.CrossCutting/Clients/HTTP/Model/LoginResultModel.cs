@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace YS.CMS.Infra.Clients.ModelResult
+namespace YS.CMS.Infra.CrossCutting.Clients.HTTP.Model
 {
     public class LoginResultModel
     {

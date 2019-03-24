@@ -1,21 +1,12 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Apps.WebApp.Models;
-using YS.CMS.Infra.Clients.HTTP;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {
     // [Authorize]
     public class HomeController : Controller
     {
-        private readonly ApiAuthProviderClient _api;
-
-        public HomeController(ApiAuthProviderClient api)
-        {
-            _api = api;
-        }
-        
         public IActionResult Index()
         {
             ViewData["Title"] = "WebApp";

@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.IoC\YS.CMS.Infra.IoC.csproj" />
+    <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.CrossCutting\YS.CMS.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using YS.CMS.Infra.IoC.Handler;
+using YS.CMS.Infra.CrossCutting.DI;
 
 namespace YS.CMS.Services.Api.Extensions
 {

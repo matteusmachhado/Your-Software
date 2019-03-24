@@ -4,16 +4,16 @@ using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Domain.Entities;
 using YS.CMS.Infra.Security;
 
-namespace YS.CMS.Infra.IoC.Handler
+namespace YS.CMS.Infra.CrossCutting.DI
 {
-    public static class ApiAuthPrivaderNativeInjector 
+    public static class ApiAuthPrivaderNativeInjector
     {
         public static void RegisterServices(IServiceCollection services, string connnectionString)
         {
-            services.AddDbContext<CMSAuthContext>(options => 
+            services.AddDbContext<CMSAuthContext>(options =>
             {
                 options.UseSqlServer(connnectionString);
-            }); 
+            });
 
             services.AddIdentity<User, IdentityRole>(options =>
             {

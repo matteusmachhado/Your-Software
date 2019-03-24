@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using YS.CMS.Infra.Clients.HTTP;
+using YS.CMS.Infra.CrossCutting.Clients.HTTP.Controllers;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Apps.WebApp.Controllers
@@ -59,7 +59,7 @@ namespace YS.CMS.Apps.WebApp.Controllers
                     var authProp = new AuthenticationProperties
                     {
                         IssuedUtc = DateTime.UtcNow,
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(25), // Expirações do cookie sempre menor que a do token.
+                        ExpiresUtc = DateTime.UtcNow.AddMinutes(25), // >_ Expirações do cookie sempre menor que a do token.
                         IsPersistent = true
                     };
 
