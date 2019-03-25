@@ -3,36 +3,28 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var ImageminPlugin = require('imagemin-webpack-plugin').default;
-
-
-// Analise grafica do tamhanho do bundle
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // >_ Analise grafica do tamhanho do bundle...
 
 let plugins = [];  
 
-let isModeDev = process.env.NODE_ENV !== 'production';
+let isModeDev = process.env.NODE_ENV !== 'production'; // >_ '!==' retorna true caso os valores NÃO sejam iguais ou NÃO tenham o mesmo tipo.
 
 plugins.push(
-    new MiniCssExtractPlugin({
-        filename: isModeDev ? "style.css" : 'style.min.css'
-    })
-);
-
-// >_ Definindo escopo global no webpack...
-plugins.push(
-    new webpack.ProvidePlugin({
+    new MiniCssExtractPlugin({ // >_ Extraindo css do default e salvando...
+        filename: isModeDev ? "css/style.css" : 'css/style.min.css'
+    }),
+    new webpack.ProvidePlugin({ // > _ Definindo escopo global no webpack...
         $: 'jquery/dist/jquery.js',
         jQuery: 'jquery/dist/jquery.js'
-    })
+    }),
+    new CleanWebpackPlugin(), // >_ Limpar builds anteriores...
+    // new BundleAnalyzerPlugin() //>_ Analisando graficamente bundle...
 );
 
-// >_ Analisando graficamente bundle 
-// plugins.push(
-   // new BundleAnalyzerPlugin()
-// );
 
-if (!isModeDev)
+if (!isModeDev) // >_ Plugins ativos somente em build de produção...
 {
     plugins.push(
         new optimizeCSSAssetsPlugin({
@@ -45,9 +37,8 @@ if (!isModeDev)
         canPrint: true
         })
     );
-    // >_ optimizando imagens (png|svg|jpg|gif)
     plugins.push(
-        new ImageminPlugin()
+        new ImageminPlugin() // >_ optimizando imagens (png|svg|jpg|gif)
     );
 }
 
@@ -60,11 +51,11 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
-        filename: isModeDev ? 'bundle.js' : 'bundle.min.js',
+        filename: isModeDev ? 'js/bundle.js' : 'js/bundle.min.js',
         publicPath: 'dist/'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.jsx', '.js']
+        extensions: ['.ts', '.tsx', '.jsx', '.js'] // > _ Extenções tratadas pelo Webpack...
     },
     optimization: {
         minimizer: [
@@ -76,7 +67,7 @@ module.exports = {
                 },
             }),
         ],
-        namedChunks: true, // >_ persistir nome dos bunbles
+        namedChunks: true, // >_ persistir nome dos bunbles...
         splitChunks: {
             cacheGroups: {
                 commons: {
@@ -84,7 +75,7 @@ module.exports = {
                     name: "vendor",
                     chunks: "initial",
                 }
-                // >_ Extrair para somente um bunble do jquery, por exemplo.
+                // >_ Extrair para somente um bunble do jquery, por exemplo...
                 //jquery: {
                 //    test: new RegExp('node_modules' + '\\' + path.sep + 'jquery.*'),
                 //    chunks: "initial",
@@ -122,14 +113,21 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                loader: 'file-loader'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'images',
+                        },
+                    },
+                ],
             }
         ]
     },
     plugins: plugins,
 
     stats: {
-        children: false
+        children: false // >_ logs das taks runnres
     }
 
 };
