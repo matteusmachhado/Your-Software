@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
-using YS.CMS.Infra.CrossCutting.Clients.HTTP.Controllers;
+using YS.CMS.Infra.CrossCutting.Clients.Core.Http.Controllers;
 using System;
 
 namespace YS.CMS.Infra.CrossCutting.DI
@@ -15,7 +15,7 @@ namespace YS.CMS.Infra.CrossCutting.DI
                     options.LoginPath = "/User/Login";
                 });
 
-            services.AddHttpClient<ApiAuthProviderClient>(client =>
+            services.AddHttpClient<AuthProviderClient>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:5000/api/");
             });

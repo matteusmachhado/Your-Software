@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import './css/List.css';
 import 'bootstrap/js/dist/modal.js';
-import jsImage from './../images/js-flat.png';
+import jsImage from './../Images/js-flat.png';
 
 type State  = {
     Items: Array<ItemLits>

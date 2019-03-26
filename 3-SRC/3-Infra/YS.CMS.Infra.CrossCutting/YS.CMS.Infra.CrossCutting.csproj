@@ -13,4 +13,9 @@
     <ProjectReference Include="..\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Clients\2-External\" />
+    <Folder Include="Clients\1-Report\" />
+  </ItemGroup>
+
 </Project>

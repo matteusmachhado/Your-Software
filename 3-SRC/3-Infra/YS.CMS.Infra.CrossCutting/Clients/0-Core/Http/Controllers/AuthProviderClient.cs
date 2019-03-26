@@ -1,15 +1,15 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using YS.CMS.Infra.CrossCutting.Clients.HTTP.Model;
+using YS.CMS.Infra.CrossCutting.Clients.Core.Http.Models;
 using YS.CMS.Infra.Security.Model;
 
-namespace YS.CMS.Infra.CrossCutting.Clients.HTTP.Controllers
+namespace YS.CMS.Infra.CrossCutting.Clients.Core.Http.Controllers
 {
-    public class ApiAuthProviderClient
+    public class AuthProviderClient
     {
         private readonly HttpClient _httpClient;
 
-        public ApiAuthProviderClient(HttpClient httpClient)
+        public AuthProviderClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

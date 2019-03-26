@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./Scripts/dist",
+    "outDir": "./Scripts/Dist",
     "noImplicitAny": true,
     "noEmitOnError": true,
     "removeComments": true,
@@ -11,6 +11,6 @@
     "esModuleInterop": true
   },
   "include": [
-    "./Scripts/src/**/*"
+    "./Scripts/SRC/**/*"
   ]
 }

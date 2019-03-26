@@ -47,7 +47,8 @@ module.exports = {
     mode: isModeDev ? 'development' : 'production',
     target: 'web',
     entry: {
-        main: './Scripts/src/app.tsx'
+        Dashboard: './Scripts/SRC/Dashboard/app.tsx',
+        Template: './Scripts/SRC/Template/app.tsx'
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
@@ -62,10 +63,10 @@ module.exports = {
             new UglifyJsPlugin({
                 uglifyOptions: {
                     output: {
-                        comments: false,
-                    },
-                },
-            }),
+                        comments: false
+                    }
+                }
+            })
         ],
         namedChunks: true, // >_ persistir nome dos bunbles...
         splitChunks: {
@@ -74,6 +75,7 @@ module.exports = {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendor",
                     chunks: "initial",
+                    minChunks: 2
                 }
                 // >_ Extrair para somente um bunble do jquery, por exemplo...
                 //jquery: {
@@ -82,7 +84,7 @@ module.exports = {
                 //    name: "jquery",
                 //    enforce: true
                 //},
-            },
+            }
         }
     },
     module: {
@@ -117,10 +119,10 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            outputPath: 'images',
-                        },
-                    },
-                ],
+                            outputPath: 'images'
+                        }
+                    }
+                ]
             }
         ]
     },

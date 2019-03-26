@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using YS.CMS.Infra.CrossCutting.Clients.HTTP.Controllers;
+using YS.CMS.Infra.CrossCutting.Clients.Core.Http.Controllers;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {
     public class UserController : Controller
     {
-        private readonly ApiAuthProviderClient _api;
+        private readonly AuthProviderClient _api;
 
-        public UserController(ApiAuthProviderClient api)
+        public UserController(AuthProviderClient api)
         {
             _api = api;
         }
