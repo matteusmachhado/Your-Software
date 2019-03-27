@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     </PropertyGroup>
 
   <ItemGroup>
@@ -18,9 +19,6 @@
   <ItemGroup>
     <None Remove="d.ts" />
     <None Remove="Scripts\SRC\Dashboard\Components\List.tsx" />
-    <None Remove="Scripts\SRC\Templates\app.tsx" />
-    <None Remove="Scripts\SRC\Templates\Basic\components-render.tsx" />
-    <None Remove="Scripts\SRC\Templates\Basic\Components\List.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,17 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\dist\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\SRC\declare-modules-images-d.ts" />
     <TypeScriptCompile Include="Scripts\SRC\Dashboard\components-render.tsx" />
-    <TypeScriptCompile Include="Scripts\SRC\Dashboard\app.tsx" />
+    <TypeScriptCompile Include="Scripts\SRC\app.tsx" />
     <TypeScriptCompile Include="Scripts\SRC\Dashboard\Components\List.tsx" />
-    <TypeScriptCompile Include="Scripts\SRC\Templates\app.tsx" />
-    <TypeScriptCompile Include="Scripts\SRC\Templates\Basic\components-render.tsx" />
-    <TypeScriptCompile Include="Scripts\SRC\Templates\Basic\Components\List.tsx" />
   </ItemGroup>
 
 </Project>

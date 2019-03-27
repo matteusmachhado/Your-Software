@@ -19,7 +19,7 @@ class ItemLits
 
     get getId()
     {
-        return this.Id
+        return this.Id;
     }
 
     get getValue()
@@ -48,10 +48,12 @@ export default class List extends Component<Props, State> {
     componentDidMount()
     {
         let Items: Array<ItemLits> = [
-            new ItemLits(1, "Item"),
-            new ItemLits(2, "Item"),
-            new ItemLits(3, "Item"),
-            new ItemLits(4, "Item"),
+            new ItemLits(1, "Item 1"),
+            new ItemLits(2, "Item 2"),
+            new ItemLits(3, "Item 3"),
+            new ItemLits(4, "Item 4"),
+            new ItemLits(5, "Item 5"),
+            new ItemLits(5, "Item 5"),
         ];
 
         this.setState({ Items: Items });

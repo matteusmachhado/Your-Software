@@ -47,8 +47,7 @@ module.exports = {
     mode: isModeDev ? 'development' : 'production',
     target: 'web',
     entry: {
-        Dashboard: './Scripts/SRC/Dashboard/app.tsx',
-        Template: './Scripts/SRC/Template/app.tsx'
+        App: './Scripts/SRC/app.tsx'
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
@@ -74,8 +73,7 @@ module.exports = {
                 commons: {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendor",
-                    chunks: "initial",
-                    minChunks: 2
+                    chunks: "initial"
                 }
                 // >_ Extrair para somente um bunble do jquery, por exemplo...
                 //jquery: {
@@ -92,12 +90,12 @@ module.exports = {
             {
                 test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
-                exclude: /node_modules/,
+                include: path.resolve(__dirname, './Scripts/SRC'),
                 options: { configFile: 'tsconfig.json' }
             },
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                test: /\.(js)$/,
+                include: path.resolve(__dirname, './Scripts/Dist'),
                 use: {
                     loader: 'babel-loader',
                     options: {

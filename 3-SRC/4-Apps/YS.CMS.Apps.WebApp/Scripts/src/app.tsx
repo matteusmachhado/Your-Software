@@ -2,8 +2,8 @@
 import * as ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { hot } from 'react-hot-loader';
-import { AppComponents } from './Basic/components-render';
+import { AppComponents } from './Dashboard/components-render';
 
 var App = hot(module)(AppComponents);
 
-ReactDOM.render(<App />, document.querySelector('#Template'));
+ReactDOM.render(<App />, document.querySelector('#Dashboard'));

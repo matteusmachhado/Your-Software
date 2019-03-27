@@ -49,10 +49,5 @@
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-hot-loader": "4.3.4"
-  },
-  "-vs-binding": {
-    "BeforeBuild": [
-      "build-prod"
-    ]
   }
 }
