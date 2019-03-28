@@ -90,12 +90,12 @@ module.exports = {
             {
                 test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
-                include: path.resolve(__dirname, './Scripts/SRC'),
+                include: path.resolve(__dirname, './Scripts/src'),
                 options: { configFile: 'tsconfig.json' }
             },
             {
-                test: /\.(js)$/,
-                include: path.resolve(__dirname, './Scripts/Dist'),
+                test: /\.(js|jsx)$/,
+                include: path.resolve(__dirname, './Scripts/dist'),
                 use: {
                     loader: 'babel-loader',
                     options: {
