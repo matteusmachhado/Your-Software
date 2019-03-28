@@ -35,7 +35,8 @@ const getInitialState = (props: Props): State =>  {
     }
 }
 
-export default class List extends Component<Props, State> {
+export default class List extends Component<Props, State>
+{
 
     state = getInitialState(this.props);
 

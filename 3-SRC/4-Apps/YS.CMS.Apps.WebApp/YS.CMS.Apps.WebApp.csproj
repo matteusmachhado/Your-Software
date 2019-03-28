@@ -7,6 +7,7 @@
   <ItemGroup>
     <None Remove="d.ts" />
     <None Remove="Scripts\src\ts\dashboard\components\List.tsx" />
+    <None Remove="Scripts\src\ts\templates\basic\components\Titulo.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\components-render.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\components\List.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\templates\basic\components\Titulo.tsx" />
   </ItemGroup>
 
 </Project>

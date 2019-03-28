@@ -90,7 +90,7 @@ module.exports = {
             {
                 test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
-                include: path.resolve(__dirname, './Scripts '),
+                include: path.resolve(__dirname, './Scripts/src/ts'),
                 options: { configFile: 'tsconfig.json' }
             },
             {
