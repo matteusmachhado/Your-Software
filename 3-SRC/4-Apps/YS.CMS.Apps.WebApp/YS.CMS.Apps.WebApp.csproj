@@ -2,23 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Scripts\SRC\models\**" />
-    <Compile Remove="wwwroot\ts\**" />
-    <Content Remove="Scripts\SRC\models\**" />
-    <Content Remove="wwwroot\ts\**" />
-    <EmbeddedResource Remove="Scripts\SRC\models\**" />
-    <EmbeddedResource Remove="wwwroot\ts\**" />
-    <None Remove="Scripts\SRC\models\**" />
-    <None Remove="wwwroot\ts\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="d.ts" />
-    <None Remove="Scripts\SRC\Dashboard\Components\List.tsx" />
+    <None Remove="Scripts\src\ts\dashboard\components\List.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\SRC\Dashboard\components-render.tsx" />
-    <TypeScriptCompile Include="Scripts\SRC\app.tsx" />
-    <TypeScriptCompile Include="Scripts\SRC\Dashboard\Components\List.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\dashboard\components-render.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\dashboard\components\List.tsx" />
   </ItemGroup>
 
 </Project>

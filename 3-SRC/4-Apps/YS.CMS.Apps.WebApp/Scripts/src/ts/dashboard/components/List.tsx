@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import './css/List.css';
 import 'bootstrap/js/dist/modal.js';
-import jsImage from './../Images/js-flat.png';
+import jsImage from './../images/js-flat.png';
 
 type State  = {
     Items: Array<ItemLits>
@@ -52,8 +52,6 @@ export default class List extends Component<Props, State> {
             new ItemLits(2, "Item 2"),
             new ItemLits(3, "Item 3"),
             new ItemLits(4, "Item 4"),
-            new ItemLits(5, "Item 5"),
-            new ItemLits(5, "Item 5"),
         ];
 
         this.setState({ Items: Items });

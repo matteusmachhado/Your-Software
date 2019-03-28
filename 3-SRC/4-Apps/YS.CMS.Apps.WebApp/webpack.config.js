@@ -47,7 +47,7 @@ module.exports = {
     mode: isModeDev ? 'development' : 'production',
     target: 'web',
     entry: {
-        App: './Scripts/SRC/app.tsx'
+        App: './Scripts/src/ts/app.tsx'
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
@@ -90,12 +90,12 @@ module.exports = {
             {
                 test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
-                include: path.resolve(__dirname, './Scripts/src'),
+                include: path.resolve(__dirname, './Scripts '),
                 options: { configFile: 'tsconfig.json' }
             },
             {
                 test: /\.(js|jsx)$/,
-                include: path.resolve(__dirname, './Scripts/dist'),
+                include: path.resolve(__dirname, './Scripts/dist/js'),
                 use: {
                     loader: 'babel-loader',
                     options: {

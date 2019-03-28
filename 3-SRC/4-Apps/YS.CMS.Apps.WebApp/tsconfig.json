@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./Scripts/dist",
+    "outDir": "./Scripts/dist/js",
     "noImplicitAny": true,
     "noEmitOnError": true,
     "removeComments": true,
     "sourceMap": true,
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
+    "lib": [ "es6", "dom" ],
     "esModuleInterop": true
   },
   "include": [
-    "./Scripts/src/**/*"
+    "./Scripts/src/ts/**/*"
   ]
 }
