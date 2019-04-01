@@ -53,6 +53,7 @@ export default class List extends Component<Props, State>
             new ItemLits(2, "Item 2"),
             new ItemLits(3, "Item 3"),
             new ItemLits(4, "Item 4"),
+            new ItemLits(5, "Item 5")
         ];
 
         this.setState({ Items: Items });

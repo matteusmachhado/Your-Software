@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-using YS.CMS.Domain.Entities;
+using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Infra.Security.Handler
