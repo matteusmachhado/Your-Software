@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import './css/Title.css';
 
 type State = {
     Title: string
@@ -7,7 +8,7 @@ type Props = {
     NomeComponent: string
 }
 
-export default class Titulo extends Component<Props, State>
+export default class Title extends Component<Props, State>
 {
     constructor(props: Props)
     {
@@ -17,7 +18,7 @@ export default class Titulo extends Component<Props, State>
     render() 
     {
         return (
-            <h1>"teste"</h1>
+            <h1 className="MyTitle"> >_ Teste</h1>
         )
     }
 }

@@ -13,7 +13,7 @@ let isModeDev = process.env.NODE_ENV !== 'production'; // >_ '!==' retorna true 
 
 plugins.push(
     new MiniCssExtractPlugin({ // >_ Extraindo css do default e salvando...
-        filename: isModeDev ? "css/style.css" : 'css/style.min.css'
+        filename: isModeDev ? "css/[name].css" : 'css/[name].min.css'
     }),
     new webpack.ProvidePlugin({ // > _ Definindo escopo global no webpack...
         $: 'jquery/dist/jquery.js',
@@ -47,11 +47,12 @@ module.exports = {
     mode: isModeDev ? 'development' : 'production',
     target: 'web',
     entry: {
-        App: './Scripts/src/ts/app.tsx'
+        app:       './Scripts/src/ts/templates/app.tsx',
+        dashboard: './Scripts/src/ts/dashboard/app.tsx'
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
-        filename: isModeDev ? 'js/bundle.js' : 'js/bundle.min.js',
+        filename: isModeDev ? 'js/[name].js' : 'js/[name].min.js',
         publicPath: 'dist/'
     },
     resolve: {

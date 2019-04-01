@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using YS.CMS.Domain.Entities;
+using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security;
 
 namespace YS.CMS.Infra.CrossCutting.DI

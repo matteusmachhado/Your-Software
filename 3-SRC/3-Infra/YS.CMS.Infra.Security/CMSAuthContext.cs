@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using YS.CMS.Domain.Entities;
+using YS.CMS.Domain.Base.Entities;
 
 namespace YS.CMS.Infra.Security
 {

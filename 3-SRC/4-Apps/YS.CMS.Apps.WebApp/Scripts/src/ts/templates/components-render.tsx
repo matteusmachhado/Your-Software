@@ -1,10 +1,10 @@
 ﻿import React, { StatelessComponent } from "react";
-import List from "./components/List";
+import Title from "../templates/basic/components/Title";
 
 export const AppComponents: StatelessComponent<{}> = () => {
     return (
         <div>
-            <List NomeComponent="Lista de Testes . . .. " />
+            <Title NomeComponent="Meu titulo" />
         </div>
     );
 }

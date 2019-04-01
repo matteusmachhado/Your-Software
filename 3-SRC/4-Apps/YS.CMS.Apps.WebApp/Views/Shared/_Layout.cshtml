@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - YS.CMS.Apps.WebApp</title>
     <environment include="Development">
-        <link rel="stylesheet" href="~/dist/css/vendor.style.css" />
-        <link rel="stylesheet" href="~/dist/css/style.css" />
+        <link rel="stylesheet" href="~/dist/css/vendor.css" />
+        <link rel="stylesheet" href="~/dist/css/dashboard.css" />
+        <link rel="stylesheet" href="~/dist/css/app.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/dist/css/vendor.style.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/dist/css/vendor.style.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/dist/css/vendor.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/dist/css/dashboard.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/dist/css/app.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -23,12 +25,14 @@
     </div>
 
     <environment include="Development">
-        <script src="~/dist/js/vendor.bundle.js"></script>
-        <script src="~/dist/js/bundle.js"></script>
+        <script src="~/dist/js/vendor.js"></script>
+        <script src="~/dist/js/dashboard.js"></script>
+        <script src="~/dist/js/app.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="~/dist/js/vendor.bundle.min.js" asp-append-version="true"></script>
-        <script src="~/dist/js/bundle.min.js" asp-append-version="true"></script>
+        <script src="~/dist/js/vendor.min.js" asp-append-version="true"></script>
+        <script src="~/dist/js/dashboard.min.js" asp-append-version="true"></script>
+        <script src="~/dist/js/app.min.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("Scripts", required: false)
 </body>
