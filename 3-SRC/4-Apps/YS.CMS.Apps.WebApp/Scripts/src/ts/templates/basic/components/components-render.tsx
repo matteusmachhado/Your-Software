@@ -1,5 +1,5 @@
 ﻿import React, { StatelessComponent } from "react";
-import Title from "../templates/basic/components/Title";
+import Title from "../../../components/Title/Title";
 
 export const AppComponents: StatelessComponent<{}> = () => {
     return (

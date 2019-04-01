@@ -47,8 +47,8 @@ module.exports = {
     mode: isModeDev ? 'development' : 'production',
     target: 'web',
     entry: {
-        app:       './Scripts/src/ts/templates/app.tsx',
-        dashboard: './Scripts/src/ts/dashboard/app.tsx'
+        app:       './Scripts/src/ts/templates/index.tsx',
+        dashboard: './Scripts/src/ts/dashboard/index.tsx'
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
@@ -76,13 +76,13 @@ module.exports = {
                     name: "vendor",
                     chunks: "initial"
                 }
-                // >_ Extrair para somente um bunble do jquery, por exemplo...
-                //jquery: {
-                //    test: new RegExp('node_modules' + '\\' + path.sep + 'jquery.*'),
-                //    chunks: "initial",
-                //    name: "jquery",
-                //    enforce: true
-                //},
+            /*  >_ Extrair para somente um bunble do jquery, por exemplo...
+                jquery: {
+                    test: new RegExp('node_modules' + '\\' + path.sep + 'jquery.*'),
+                    chunks: "initial",
+                    name: "jquery",
+                    enforce: true
+                }, */
             }
         }
     },

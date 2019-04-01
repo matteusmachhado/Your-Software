@@ -1,8 +1,8 @@
-﻿import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+﻿import React from 'react';
+import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { hot } from 'react-hot-loader';
-import { AppComponents } from './components-render';
+import { AppComponents } from './components/components-render';
 
 var App = hot(module)(AppComponents);
 

@@ -1,5 +1,5 @@
 ﻿import React, { StatelessComponent } from "react";
-import List from "./components/List";
+import List from "../../components/List/List";
 
 export const AppComponents: StatelessComponent<{}> = () => {
     return (

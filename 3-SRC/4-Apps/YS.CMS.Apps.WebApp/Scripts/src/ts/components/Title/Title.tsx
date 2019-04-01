@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import './css/Title.css';
+import './Title.css';
 
 type State = {
     Title: string
