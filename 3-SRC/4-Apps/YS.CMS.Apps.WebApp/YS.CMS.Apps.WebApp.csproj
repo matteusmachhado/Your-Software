@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <None Remove="d.ts" />
+    <None Remove="Scripts\src\ts\components\SpinnerCircle\SpinnerCircle.tsx" />
     <None Remove="Scripts\src\ts\dashboard\components\List.tsx" />
     <None Remove="Scripts\src\ts\dashboard\index.tsx" />
     <None Remove="Scripts\src\ts\templates\basic\components\Title.tsx" />
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\ts\components\SpinnerCircle\SpinnerCircle.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\index.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\components\components-render.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\templates\index.tsx" />

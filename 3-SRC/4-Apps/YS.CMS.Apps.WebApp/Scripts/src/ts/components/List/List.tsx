@@ -2,9 +2,12 @@
 import './List.css';
 import 'bootstrap/js/dist/modal.js';
 import jsImage from './js-flat.png';
+import { setTimeout } from 'timers';
+import SpinnerCircle from './../SpinnerCircle/SpinnerCircle';
 
 type State  = {
-    Items: Array<ItemLits>
+    Items: Array<ItemLits>,
+    Display: boolean
 }
 type Props = {
     NomeComponent: string
@@ -31,13 +34,14 @@ class ItemLits
 
 const getInitialState = (props: Props): State =>  {
     return {
-        Items: Array<ItemLits>()
+        Items: Array<ItemLits>(),
+        Display: false
     }
 }
 
+
 export default class List extends Component<Props, State>
 {
-
     state = getInitialState(this.props);
 
     constructor(prop: Props)
@@ -54,10 +58,13 @@ export default class List extends Component<Props, State>
             new ItemLits(3, "Item 3"),
             new ItemLits(4, "Item 4"),
             new ItemLits(5, "Item 5"),
-            new ItemLits(6, "Item 6")
+            new ItemLits(6, "Item 6"),
+            new ItemLits(7, "Item 7")
         ];
-
-        this.setState({ Items: Items });
+        setTimeout(() => {
+            console.log("Fui chamado depois de 5 segundos...");
+            this.setState({ Items: Items, Display: true });
+        }, 5000);
     }
 
     showMensagem() : void
@@ -66,20 +73,31 @@ export default class List extends Component<Props, State>
     }
 
     render() {
-        return (
-            <div>
+        console.log("Render...");
+        
+        let component = (
+            <>
                 <h1 className="h1Titulo" onClick={this.showMensagem}> {this.props.NomeComponent} </h1>
                 <img src={jsImage} />
                 <ul className="list-group">
-                {
-                    this.state.Items.map(function (item, i) {
-                        return (
-                            <li key={item.getId} className="list-group-item"> {item.getValue} </li>      
-                        );
-                    })
-                }
+                    {
+                        this.state.Items.map(function (item, i) {
+                            return (
+                                <li key={item.getId} className="list-group-item"> {item.getValue} </li>
+                            );
+                        })
+                    }
                 </ul>
-            </div>
+            </>
+        );
+
+        if (!this.state.Display) { component = <SpinnerCircle /> } 
+
+        return (
+            <>
+                {component}
+            </>
         )
     }
+
 }
