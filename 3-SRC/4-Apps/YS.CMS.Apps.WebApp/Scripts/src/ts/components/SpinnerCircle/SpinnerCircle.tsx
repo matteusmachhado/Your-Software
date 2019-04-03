@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { TweenMax } from "gsap"; 
 
 type State = { }
 type Props = { }
