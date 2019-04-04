@@ -63,7 +63,7 @@ export default class List extends Component<Props, State>
         ];
         setTimeout(() => {
             console.log("Fui chamado depois de 5 segundos...");
-            this.setState({ Items: Items, Display: true });
+            this.setState({ Items: Items, Display: false });
         }, 5000);
     }
 

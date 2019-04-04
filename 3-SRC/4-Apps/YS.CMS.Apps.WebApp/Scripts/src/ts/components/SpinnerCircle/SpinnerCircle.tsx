@@ -1,23 +1,34 @@
 ﻿import React, { Component } from 'react';
-import { TweenMax } from "gsap"; 
+import { TweenLite, Bounce } from "gsap"; 
+import './SpinnerCircle.css';
+import { setInterval } from 'timers';
 
 type State = { }
 type Props = { }
 
 export default class SpinnerCircle extends Component<Props, State>
 {
-    state = {
-        // >_  ...
+    constructor(props: Props)   
+    {
+        super(props);   
     }
-
+        
+    Spinner: HTMLDivElement;
+          
+    componentDidMount() {   
+        TweenLite.to(this.Spinner, 2, { 
+            ease: Bounce.easeOut, 
+            rotation: '360deg',
+            repeat: -1,
+            borderRadius: '50%', 
+            scale: .7,
+        });
+    }
+     
     render() {
         return (
             <>
-                <div className="d-flex justify-content-center">
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
+                <div className="square-ball" ref={e => this.Spinner = e}></div>
             </>
         )
     }

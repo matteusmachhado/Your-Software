@@ -1,0 +1,21 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.square-ball {
+    background: #facd9e;
+    border: 8px solid #389798;
+    width: 80px;
+    height: 80px;
+}
+
