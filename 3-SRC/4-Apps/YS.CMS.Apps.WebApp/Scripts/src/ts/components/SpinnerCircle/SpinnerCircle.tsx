@@ -1,7 +1,6 @@
 ﻿import React, { Component } from 'react';
-import { TweenLite, Bounce } from "gsap"; 
+import { TweenMax, Bounce } from "gsap"; 
 import './SpinnerCircle.css';
-import { setInterval } from 'timers';
 
 type State = { }
 type Props = { }
@@ -16,12 +15,13 @@ export default class SpinnerCircle extends Component<Props, State>
     Spinner: HTMLDivElement;
           
     componentDidMount() {   
-        TweenLite.to(this.Spinner, 2, { 
+        TweenMax.to(this.Spinner, 2, { 
             ease: Bounce.easeOut, 
             rotation: '360deg',
             repeat: -1,
             borderRadius: '50%', 
             scale: .7,
+            yoyo: true
         });
     }
      
