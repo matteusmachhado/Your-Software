@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { TweenMax, Bounce, TweenLite, Power0 } from "gsap"; 
+import { TweenMax, Bounce, Power0 } from "gsap"; 
 import './SpinnerCircle.css';
 
 type State = { }

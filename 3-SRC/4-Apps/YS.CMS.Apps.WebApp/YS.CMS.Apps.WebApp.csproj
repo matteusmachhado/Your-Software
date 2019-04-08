@@ -6,11 +6,14 @@
 
   <ItemGroup>
     <None Remove="d.ts" />
+    <None Remove="Scripts\src\ts\interface\IHttpResponse.ts" />
     <None Remove="Scripts\src\ts\components\SpinnerCircle\SpinnerCircle.tsx" />
     <None Remove="Scripts\src\ts\dashboard\components\List.tsx" />
     <None Remove="Scripts\src\ts\dashboard\index.tsx" />
+    <None Remove="Scripts\src\ts\services\RESTService.ts" />
     <None Remove="Scripts\src\ts\templates\basic\components\Title.tsx" />
     <None Remove="Scripts\src\ts\templates\components-render.tsx" />
+    <None Remove="Scripts\src\ts\utils\Http.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,13 +28,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\ts\interface\IHttpResponse.ts" />
     <TypeScriptCompile Include="Scripts\src\ts\components\SpinnerCircle\SpinnerCircle.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\index.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\components\components-render.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\services\RESTService.ts" />
     <TypeScriptCompile Include="Scripts\src\ts\templates\index.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\components\List\List.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\components\Title\Title.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\templates\basic\components\components-render.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\services\HTTP.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Scripts\src\ts\templates\basic\controllers\" />
+    <Folder Include="Scripts\src\ts\templates\basic\models\" />
+    <Folder Include="Scripts\src\ts\utils\" />
   </ItemGroup>
 
 </Project>
