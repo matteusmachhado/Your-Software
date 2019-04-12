@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <None Remove="d.ts" />
+    <None Remove="Scripts\src\ts\components\Logo\Logo.tsx" />
     <None Remove="Scripts\src\ts\interface\IHttpResponse.ts" />
     <None Remove="Scripts\src\ts\components\SpinnerCircle\SpinnerCircle.tsx" />
     <None Remove="Scripts\src\ts\dashboard\components\List.tsx" />
@@ -28,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\src\ts\components\Logo\Logo.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\interface\IHttpResponse.ts" />
     <TypeScriptCompile Include="Scripts\src\ts\components\SpinnerCircle\SpinnerCircle.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\index.tsx" />
