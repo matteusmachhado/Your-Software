@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using YS.CMS.Domain.Entities;
+using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security.Handler;
 using YS.CMS.Infra.Security.Model;
 
