@@ -10,13 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\YS.CMS.Infra.CrossCutting\YS.CMS.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\YS.CMS.Infra.Data\YS.CMS.Infra.Data.csproj" />
     <ProjectReference Include="..\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Clients\2-External\" />
-    <Folder Include="Clients\1-Report\" />
   </ItemGroup>
 
 </Project>

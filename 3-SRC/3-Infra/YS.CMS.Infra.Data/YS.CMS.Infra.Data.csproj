@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\0-Common\YS.CMS.Common\YS.CMS.Common.csproj" />
     <ProjectReference Include="..\..\1-Domain\YS.CMS.Domain.Entities\YS.CMS.Domain.csproj" />
   </ItemGroup>
 

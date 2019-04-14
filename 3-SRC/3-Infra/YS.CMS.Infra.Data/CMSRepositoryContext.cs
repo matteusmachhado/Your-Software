@@ -7,8 +7,14 @@ namespace YS.CMS.Infra.Data
     {
         public DbSet<Post> Posts { get; set; }
 
+        public CMSRepositoryContext(DbContextOptions<CMSRepositoryContext> dbContext) : base(dbContext)
+        {
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123;");
             base.OnConfiguring(optionsBuilder);
         }
     }

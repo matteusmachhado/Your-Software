@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Infra.CrossCutting.Clients.Core.Http.Controllers;
 using System;
 
-namespace YS.CMS.Infra.CrossCutting.DI
+namespace YS.CMS.Infra.DI
 {
     public static class WebAppNativeInjector
     {

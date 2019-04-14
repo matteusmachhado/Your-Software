@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using YS.CMS.Infra.CrossCutting.DI;
+using YS.CMS.Infra.DI;
 
 namespace YS.CMS.Services.ApiAuthProvider.Extensions
 {

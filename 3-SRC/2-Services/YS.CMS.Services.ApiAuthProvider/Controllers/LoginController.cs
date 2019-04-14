@@ -7,7 +7,6 @@ using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Services.ApiAuthProvider.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
     public class LoginController : ControllerBase

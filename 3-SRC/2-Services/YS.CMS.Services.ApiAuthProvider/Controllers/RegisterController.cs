@@ -29,7 +29,7 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
                 {
                     return Ok(result);
                 }
-                // sem reotrno por segurança.
+                // >_ sem retorno por segurança.
             }
             return BadRequest();
         }

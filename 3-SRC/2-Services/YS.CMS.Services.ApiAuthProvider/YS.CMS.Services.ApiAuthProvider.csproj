@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.CrossCutting\YS.CMS.Infra.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.DI\YS.CMS.Infra.DI.csproj" />
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.Security\YS.CMS.Infra.Security.csproj" />
   </ItemGroup>
 

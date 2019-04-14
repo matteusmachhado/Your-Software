@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security;
 
-namespace YS.CMS.Infra.CrossCutting.DI
+namespace YS.CMS.Infra.DI
 {
     public static class ApiAuthPrivaderNativeInjector
     {

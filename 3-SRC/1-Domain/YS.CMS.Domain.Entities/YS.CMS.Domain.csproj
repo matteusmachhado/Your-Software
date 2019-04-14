@@ -18,4 +18,8 @@
     <Folder Include="Templates\Basic\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\0-Common\YS.CMS.Common\YS.CMS.Common.csproj" />
+  </ItemGroup>
+
 </Project>
