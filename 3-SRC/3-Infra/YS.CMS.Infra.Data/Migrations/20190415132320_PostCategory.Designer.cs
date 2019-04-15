@@ -10,14 +10,14 @@ using YS.CMS.Infra.Data;
 namespace YS.CMS.Infra.Data.Migrations
 {
     [DbContext(typeof(CMSRepositoryContext))]
-    [Migration("20190415011548_Add-Post-and-Category")]
-    partial class AddPostandCategory
+    [Migration("20190415132320_PostCategory")]
+    partial class PostCategory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -27,14 +27,14 @@ namespace YS.CMS.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime?>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<Guid>("CreateUser");
 
-                    b.Property<DateTime>("DeleteDate")
+                    b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("DateTime");
 
                     b.Property<string>("Description")
@@ -48,10 +48,10 @@ namespace YS.CMS.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<DateTime>("PublishDate")
+                    b.Property<DateTime?>("PublishDate")
                         .HasColumnType("DateTime");
 
-                    b.Property<DateTime>("UpdateDate");
+                    b.Property<DateTime?>("UpdateDate");
 
                     b.Property<Guid>("UpdateUser");
 
@@ -70,22 +70,21 @@ namespace YS.CMS.Infra.Data.Migrations
 
                     b.Property<int?>("CategoryId");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime?>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("DateTime")
                         .HasDefaultValueSql("getdate()");
 
                     b.Property<Guid>("CreateUser");
 
-                    b.Property<DateTime>("DeleteDate")
+                    b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("DateTime");
 
                     b.Property<bool?>("IsActive")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
                         .HasDefaultValue(true);
 
-                    b.Property<DateTime>("PublishDate")
+                    b.Property<DateTime?>("PublishDate")
                         .HasColumnType("DateTime");
 
                     b.Property<string>("SubTitle")
@@ -99,7 +98,9 @@ namespace YS.CMS.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<DateTime>("UpdateDate");
+                    b.Property<DateTime?>("UpdateDate")
+                        .IsRequired()
+                        .HasColumnType("DateTime");
 
                     b.Property<Guid>("UpdateUser");
 

@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using YS.CMS.Domain.Base.Entities;
 
-namespace YS.CMS.Infra.Data.Configurations
+namespace YS.CMS.Infra.Data.Mapping
 {
-    internal class PostConfiguration : IEntityTypeConfiguration<Post>
+    internal class PostMap : IEntityTypeConfiguration<Post>
     {
         public void Configure(EntityTypeBuilder<Post> builder)
         {
@@ -23,10 +23,10 @@ namespace YS.CMS.Infra.Data.Configurations
                 .IsRequired();
 
             builder
-                .Property(p => p.IsActive)
-                .HasColumnType("bit")
-                .HasDefaultValue(true);
+                 .Property(c => c.IsActive)
+                 .HasDefaultValue(true);
 
+            
             builder
                  .Property(c => c.Author)
                  .IsRequired();
@@ -46,6 +46,7 @@ namespace YS.CMS.Infra.Data.Configurations
 
             builder
                .Property(p => p.UpdateDate)
+               .HasColumnType("DateTime")
                .IsRequired();
 
             builder
@@ -55,7 +56,6 @@ namespace YS.CMS.Infra.Data.Configurations
             builder
                 .Property(p => p.DeleteDate)
                 .HasColumnType("DateTime");
-            
         }
     }
 }

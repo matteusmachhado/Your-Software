@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using YS.CMS.Domain.Base.Entities;
 
-namespace YS.CMS.Infra.Data.Configurations
+namespace YS.CMS.Infra.Data.Mapping
 {
-    internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    internal class CategoryMap : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
@@ -41,7 +41,6 @@ namespace YS.CMS.Infra.Data.Configurations
             builder
                 .Property(c => c.DeleteDate)
                 .HasColumnType("DateTime");
-
         }
     }
 }

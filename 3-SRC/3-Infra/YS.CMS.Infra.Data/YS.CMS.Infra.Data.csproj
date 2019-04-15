@@ -8,6 +8,8 @@
     <Compile Remove="Migrations\20190414220805_Add-Post-and-Category.cs" />
     <Compile Remove="Migrations\20190414221138_Add-Post-and-Category.cs" />
     <Compile Remove="Migrations\20190414224245_Add-Post-and-Category.cs" />
+    <Compile Remove="Migrations\20190415122226_PostCategory.cs" />
+    <Compile Remove="Migrations\20190415125009_PostCategory.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using YS.CMS.Domain.Base.Entities;
 
-namespace YS.CMS.Infra.Security.Validators.Core
+namespace YS.CMS.Infra.Security.Validators
 {
     public class PostValidator : AbstractValidator<Post>
     {

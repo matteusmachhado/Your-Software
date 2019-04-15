@@ -11,9 +11,9 @@ namespace YS.CMS.Domain.Base.Entities
         public List<Post> Posts { get; set; }
         public Guid CreateUser { get; set; }
         public Guid UpdateUser { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public DateTime PublishDate { get; set; }
-        public DateTime DeleteDate { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
     }
 }

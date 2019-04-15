@@ -6,7 +6,7 @@ using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.interfaces;
 using YS.CMS.Infra.Data;
 using YS.CMS.Infra.Data.Repository;
-using YS.CMS.Infra.Security.Validators.Core;
+using YS.CMS.Infra.Security.Validators;
 
 namespace YS.CMS.Infra.DI
 {
@@ -20,6 +20,7 @@ namespace YS.CMS.Infra.DI
             });
 
             services.AddTransient<IPost, PostRepositorio>();
+            services.AddTransient<IRepositorioBase<Category>, RepositorioBase<Category>>();
             services.AddMvc(setup =>
             {   // >_ set configs validators
 

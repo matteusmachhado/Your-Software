@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Clients\2-External\" />
     <Folder Include="Clients\1-Report\" />
+    <Folder Include="External\Http\" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using YS.CMS.Services.Api.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -14,20 +15,36 @@ namespace YS.CMS.Services.Api.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IPost _repos;
+        private readonly IRepositorioBase<Category> _repos2;
 
-        public PostsController(IPost repos)
+        public PostsController(IPost repos, IRepositorioBase<Category> repos2)
         {
             _repos = repos;
+            _repos2 = repos2;
         }
 
         [HttpPost]
-        public async Task<IActionResult> New(Post post)
+        public async Task<IActionResult> New(Post _post)
         {
             if (ModelState.IsValid)
             {
-                await _repos.CreateAsync(post);
-                var uri = Url.Action("Get", new { id = post.Id });
-                return Created(uri, post);
+                var post = new Post();
+                post.Title = "Title Titlesdfsdfds ";
+                post.SubTitle = "SubTitle";
+                post.Text = "Text";
+                post.Author = Guid.NewGuid();
+                post.CreateUser = Guid.NewGuid();
+                post.UpdateUser = Guid.NewGuid();
+                post.UpdateDate = DateTime.Now;
+                
+                try
+                {
+                    await _repos.CreateAsync(post);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
             }
             return BadRequest();
@@ -60,20 +77,20 @@ namespace YS.CMS.Services.Api.Controllers
             return BadRequest();
         }
 
-        [HttpPost]
-        public async Task<IEnumerable<Post>> FilterAsync(PostFilterModel filter)
-        {
-            IQueryable<Post> query = _repos.All.AsNoTracking();
+        //[HttpPost]
+        //public async Task<IEnumerable<Post>> FilterAsync(PostFilterModel filter)
+        //{
+        //    IQueryable<Post> query = _repos.All.AsNoTracking();
 
-            if (!string.IsNullOrEmpty(filter.Title))
-            {
-                query.Where(p => p.Title.Contains(filter.Title));
-            }
-            else if (!string.IsNullOrEmpty(filter.Description))
-            {
-                query.Where(p => p.Title.Contains(filter.Description));
-            }
-            return await query.ToListAsync();
-        }
+        //    if (!string.IsNullOrEmpty(filter.Title))
+        //    {
+        //        query.Where(p => p.Title.Contains(filter.Title));
+        //    }
+        //    else if (!string.IsNullOrEmpty(filter.Description))
+        //    {
+        //        query.Where(p => p.Title.Contains(filter.Description));
+        //    }
+        //    return await query.ToListAsync();
+        //}
     }
 }

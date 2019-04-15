@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YS.CMS.Domain.Base.Entities;
-using YS.CMS.Infra.Data.Configurations;
+using YS.CMS.Infra.Data.Mapping;
 
 namespace YS.CMS.Infra.Data
 {
@@ -11,19 +11,19 @@ namespace YS.CMS.Infra.Data
 
         public CMSRepositoryContext(DbContextOptions<CMSRepositoryContext> dbContext) : base(dbContext)
         {
-                
+
         }
-       
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123;");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=Admin;Password=123456;");
             base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<Post>(new PostConfiguration());
-            modelBuilder.ApplyConfiguration<Category>(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration<Post>(new PostMap());
+            modelBuilder.ApplyConfiguration<Category>(new CategoryMap());
             base.OnModelCreating(modelBuilder);
         }
     }
