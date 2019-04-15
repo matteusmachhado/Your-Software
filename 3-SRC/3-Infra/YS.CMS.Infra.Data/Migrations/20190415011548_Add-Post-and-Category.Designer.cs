@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YS.CMS.Infra.Data;
 
 namespace YS.CMS.Infra.Data.Migrations
 {
     [DbContext(typeof(CMSRepositoryContext))]
-    partial class CMSRepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20190415011548_Add-Post-and-Category")]
+    partial class AddPostandCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

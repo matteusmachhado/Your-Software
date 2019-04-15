@@ -1,18 +1,16 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace YS.CMS.Domain.Base.Entities
 {
-    public class Post : EntityBase
+    public class Category : EntityBase
     {
-        public string Title { get; set; }
-        public string SubTitle { get; set; }
-        public string Text { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public bool? IsActive { get; set; }
-        public Guid Author { get; set; }
+        public List<Post> Posts { get; set; }
         public Guid CreateUser { get; set; }
         public Guid UpdateUser { get; set; }
-        public Category Category { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public DateTime PublishDate { get; set; }

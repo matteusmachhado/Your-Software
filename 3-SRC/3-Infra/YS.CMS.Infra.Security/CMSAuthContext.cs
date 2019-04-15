@@ -6,9 +6,16 @@ namespace YS.CMS.Infra.Security
 {
     public class CMSAuthContext : IdentityDbContext<User>
     {
-        public CMSAuthContext(DbContextOptions<CMSAuthContext> options) : base (options)
+
+        public CMSAuthContext(DbContextOptions<CMSAuthContext> dbContext) : base(dbContext)
         {
-            this.Database.EnsureCreated();
+
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123;");
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

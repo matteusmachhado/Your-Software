@@ -11,7 +11,7 @@ namespace YS.CMS.Infra.Security.Validators.Core
         public PostValidator()
         {
             RuleFor(p => p.Title).NotEmpty();
-            RuleFor(p => p.Description).NotEmpty();
+            RuleFor(p => p.Text).NotEmpty();
         }
     }
 }

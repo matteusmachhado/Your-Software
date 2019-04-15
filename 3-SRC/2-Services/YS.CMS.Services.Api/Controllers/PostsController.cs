@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.interfaces;
 using System.Linq;
+using System.Collections.Generic;
+using YS.CMS.Services.Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -55,6 +58,22 @@ namespace YS.CMS.Services.Api.Controllers
                 return NoContent();
             }
             return BadRequest();
+        }
+
+        [HttpPost]
+        public async Task<IEnumerable<Post>> FilterAsync(PostFilterModel filter)
+        {
+            IQueryable<Post> query = _repos.All.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(filter.Title))
+            {
+                query.Where(p => p.Title.Contains(filter.Title));
+            }
+            else if (!string.IsNullOrEmpty(filter.Description))
+            {
+                query.Where(p => p.Title.Contains(filter.Description));
+            }
+            return await query.ToListAsync();
         }
     }
 }
