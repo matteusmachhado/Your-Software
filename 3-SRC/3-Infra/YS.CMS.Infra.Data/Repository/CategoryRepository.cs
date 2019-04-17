@@ -1,13 +1,13 @@
 ﻿using YS.CMS.Domain.Base.Entities;
-using YS.CMS.Domain.Base.interfaces;
+using YS.CMS.Domain.Base.Interfaces;
 
 namespace YS.CMS.Infra.Data.Repository
 {
-    public class PostRepositorio : RepositorioBase<Post>, IPost
+    public class CategoryRepository : RepositorioBase<Category>, ICategory
     {
         private readonly CMSRepositoryContext _context;
 
-        public PostRepositorio(CMSRepositoryContext context) : base(context)
+        public CategoryRepository(CMSRepositoryContext context) : base(context)
         {
             _context = context;
         }

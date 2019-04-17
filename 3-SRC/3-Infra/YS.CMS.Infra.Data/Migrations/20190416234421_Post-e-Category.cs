@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace YS.CMS.Infra.Data.Migrations
 {
-    public partial class PostCategory : Migration
+    public partial class PosteCategory : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,10 +16,10 @@ namespace YS.CMS.Infra.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "nvarchar(256)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", nullable: true),
-                    IsActive = table.Column<bool>(nullable: true, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreateUser = table.Column<Guid>(nullable: false),
-                    UpdateUser = table.Column<Guid>(nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "DateTime", nullable: true, defaultValueSql: "getdate()"),
+                    UpdateUser = table.Column<Guid>(nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "DateTime", nullable: false),
                     UpdateDate = table.Column<DateTime>(nullable: true),
                     PublishDate = table.Column<DateTime>(type: "DateTime", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "DateTime", nullable: true)
@@ -38,13 +38,13 @@ namespace YS.CMS.Infra.Data.Migrations
                     Title = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     SubTitle = table.Column<string>(type: "nvarchar(256)", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(1000)", nullable: false),
-                    IsActive = table.Column<bool>(nullable: true, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CategoryId = table.Column<int>(nullable: true),
                     Author = table.Column<Guid>(nullable: false),
                     CreateUser = table.Column<Guid>(nullable: false),
-                    UpdateUser = table.Column<Guid>(nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "DateTime", nullable: true, defaultValueSql: "getdate()"),
-                    UpdateDate = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    UpdateUser = table.Column<Guid>(nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "DateTime", nullable: true),
                     PublishDate = table.Column<DateTime>(type: "DateTime", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "DateTime", nullable: true)
                 },

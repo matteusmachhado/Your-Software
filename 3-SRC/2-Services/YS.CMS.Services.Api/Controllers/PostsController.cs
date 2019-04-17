@@ -2,55 +2,47 @@
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.interfaces;
-using System.Linq;
-using System.Collections.Generic;
-using YS.CMS.Services.Api.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using YS.CMS.Services.Api.Models;
 using System;
+using YS.CMS.Domain.Base.Interfaces;
 
 namespace YS.CMS.Services.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:ApiVersion}/posts")]
     public class PostsController : ControllerBase
     {
         private readonly IPost _repos;
-        private readonly IRepositorioBase<Category> _repos2;
+        private readonly ICategory _reposCategory;
 
-        public PostsController(IPost repos, IRepositorioBase<Category> repos2)
+        public PostsController(IPost repos, ICategory reposCategory)
         {
             _repos = repos;
-            _repos2 = repos2;
+            _reposCategory = reposCategory;
         }
 
         [HttpPost]
-        public async Task<IActionResult> New(Post _post)
+        public async Task<IActionResult> New(Post post)
         {
             if (ModelState.IsValid)
             {
-                var post = new Post();
-                post.Title = "Title Titlesdfsdfds ";
-                post.SubTitle = "SubTitle";
-                post.Text = "Text";
-                post.Author = Guid.NewGuid();
-                post.CreateUser = Guid.NewGuid();
-                post.UpdateUser = Guid.NewGuid();
-                post.UpdateDate = DateTime.Now;
                 
-                try
-                {
-                    await _repos.CreateAsync(post);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                var category = await _reposCategory.All.FirstOrDefaultAsync(c => c.Id == 1);
+                post.Category = category;
+                await _repos.CreateAsync(post);
+
+                var uri = Url.Action("Get", new { id = post.Id });
+                return Created(uri, post);
 
             }
             return BadRequest();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int? id)
         {
             if (id.HasValue)
@@ -66,7 +58,7 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var post = _repos.AsNoTracking().FirstOrDefault(p => p.Id == model.Id);
+                var post = await _repos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == model.Id);
                 if (post != null)
                 {
                     await _repos.UpdateAsync(model);
@@ -77,20 +69,40 @@ namespace YS.CMS.Services.Api.Controllers
             return BadRequest();
         }
 
-        //[HttpPost]
-        //public async Task<IEnumerable<Post>> FilterAsync(PostFilterModel filter)
-        //{
-        //    IQueryable<Post> query = _repos.All.AsNoTracking();
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Post model)
+        {
+            if (ModelState.IsValid)
+            {
+                var post = await _repos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == model.Id);
+                if (post != null)
+                {
+                    await _repos.DeleteAsync(model);
+                    return Ok();
+                }
+                return NoContent();
+            }
+            return BadRequest();
+        }
 
-        //    if (!string.IsNullOrEmpty(filter.Title))
-        //    {
-        //        query.Where(p => p.Title.Contains(filter.Title));
-        //    }
-        //    else if (!string.IsNullOrEmpty(filter.Description))
-        //    {
-        //        query.Where(p => p.Title.Contains(filter.Description));
-        //    }
-        //    return await query.ToListAsync();
-        //}
+        [HttpPost("filter")]
+        public async Task<IEnumerable<Post>> FilterAsync(PostFilterModel filter)
+        {
+            IQueryable<Post> query = _repos.All.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(filter.Title))
+            {
+                query = query.Where(p => p.Title.Contains(filter.Title));
+            }
+            else if (!string.IsNullOrEmpty(filter.Text))
+            {
+                query = query.Where(p => p.Title.Contains(filter.Text));
+            }
+            else if (filter.CreateDate.HasValue)
+            {
+                query = query.Where(p => p.CreateDate.Date == filter.CreateDate.Value.Date);
+            }
+            return await query.ToListAsync();
+        }
     }
 }

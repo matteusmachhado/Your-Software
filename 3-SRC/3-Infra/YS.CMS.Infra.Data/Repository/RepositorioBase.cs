@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Base.interfaces;
@@ -33,10 +34,10 @@ namespace YS.CMS.Infra.Data.Repository
         {
             return _context.Set<TEntity>().AsNoTracking().AsQueryable();
         }
-
+        
         public async Task<TEntity> FindAsync(int id)
         {
-             return await _context.Set<TEntity>().FindAsync(id);
+            return await _context.Set<TEntity>().FindAsync(id);
         }
 
         public async Task UpdateAsync(params TEntity[] objs)
@@ -50,7 +51,23 @@ namespace YS.CMS.Infra.Data.Repository
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        public async Task<IList<TEntity>> FindAllAsync(IEnumerable<int> ids)
+        {
+            var TEntityList = new List<TEntity>();
             
+            foreach (var id in ids)
+            {
+                var entity = await FindAsync(id);
+                if (entity != null)
+                {
+                    TEntityList.Add(entity);
+                    continue;
+                }
+                // logar ids não encontrados...
+            }
+            return TEntityList;
         }
     }
 }

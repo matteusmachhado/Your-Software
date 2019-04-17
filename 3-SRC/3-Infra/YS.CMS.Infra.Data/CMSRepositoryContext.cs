@@ -16,7 +16,7 @@ namespace YS.CMS.Infra.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=Admin;Password=123456;");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=CMS;User ID=matteusmachhado;Password=123;");
             base.OnConfiguring(optionsBuilder);
         }
 

@@ -10,6 +10,10 @@
     <Compile Remove="Migrations\20190414224245_Add-Post-and-Category.cs" />
     <Compile Remove="Migrations\20190415122226_PostCategory.cs" />
     <Compile Remove="Migrations\20190415125009_PostCategory.cs" />
+    <Compile Remove="Migrations\20190415132320_PostCategory.cs" />
+    <Compile Remove="Migrations\20190416230743_Post-e-Category.cs" />
+    <Compile Remove="Migrations\20190416233507_Post-e-Category.cs" />
+    <Compile Remove="Migrations\20190416233654_Post-e-Category.cs" />
   </ItemGroup>
 
   <ItemGroup>

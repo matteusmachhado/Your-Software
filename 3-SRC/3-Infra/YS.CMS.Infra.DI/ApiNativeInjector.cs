@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.interfaces;
+using YS.CMS.Domain.Base.Interfaces;
 using YS.CMS.Infra.Data;
 using YS.CMS.Infra.Data.Repository;
 using YS.CMS.Infra.Security.Validators;
@@ -19,8 +20,10 @@ namespace YS.CMS.Infra.DI
                 options.UseSqlServer(connectionString);
             });
 
+            // >_ Repositorys
             services.AddTransient<IPost, PostRepositorio>();
-            services.AddTransient<IRepositorioBase<Category>, RepositorioBase<Category>>();
+            services.AddTransient<ICategory, CategoryRepository>();
+
             services.AddMvc(setup =>
             {   // >_ set configs validators
 
@@ -28,6 +31,10 @@ namespace YS.CMS.Infra.DI
 
             // >_ add validators
             services.AddTransient<IValidator<Post>, PostValidator>();
+            services.AddTransient<IValidator<Category>, CategoryValidactor>();
+
+            // >_ api version
+            services.AddApiVersioning();
         }
     }
 }

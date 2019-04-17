@@ -13,9 +13,9 @@ namespace YS.CMS.Apps.WebApp.Controllers
 {
     public class UserController : Controller
     {
-        private readonly AuthProviderClient _api;
+        private readonly AuthCliente _api;
 
-        public UserController(AuthProviderClient api)
+        public UserController(AuthCliente api)
         {
             _api = api;
         }

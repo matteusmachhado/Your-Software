@@ -5,11 +5,11 @@ using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Infra.CrossCutting.Clients.Core.Http.Controllers
 {
-    public class AuthProviderClient
+    public class AuthCliente
     {
         private readonly HttpClient _httpClient;
 
-        public AuthProviderClient(HttpClient httpClient)
+        public AuthCliente(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

@@ -1,7 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using YS.CMS.Domain.Base.Entities;
 
 namespace YS.CMS.Infra.Security.Validators
@@ -12,6 +9,8 @@ namespace YS.CMS.Infra.Security.Validators
         {
             RuleFor(p => p.Title).NotEmpty();
             RuleFor(p => p.Text).NotEmpty();
+            RuleFor(p => p.CreateUser).NotEmpty();
+            RuleFor(p => p.Author).NotEmpty();
         }
     }
 }

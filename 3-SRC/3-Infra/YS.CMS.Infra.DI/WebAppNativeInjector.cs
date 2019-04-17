@@ -15,7 +15,7 @@ namespace YS.CMS.Infra.DI
                     options.LoginPath = "/User/Login";
                 });
 
-            services.AddHttpClient<AuthProviderClient>(client =>
+            services.AddHttpClient<AuthCliente>(client =>
             {
                 client.BaseAddress = new Uri("http://localhost:5000/api/");
             });

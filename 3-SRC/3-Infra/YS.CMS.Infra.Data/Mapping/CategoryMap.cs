@@ -19,20 +19,20 @@ namespace YS.CMS.Infra.Data.Mapping
 
             builder
                 .Property(c => c.IsActive)
-                .HasDefaultValue(true);
+                .HasColumnType("bit")
+                .IsRequired();
             
             builder
                 .Property(c => c.CreateUser)
                 .IsRequired();
 
             builder
-                .Property(c => c.UpdateUser)
-                .IsRequired();
+                .Property(c => c.UpdateUser);
 
             builder
                 .Property(c => c.CreateDate)
                 .HasColumnType("DateTime")
-                .HasDefaultValueSql("getdate()");
+                .IsRequired();
 
             builder
                 .Property(c => c.PublishDate)
