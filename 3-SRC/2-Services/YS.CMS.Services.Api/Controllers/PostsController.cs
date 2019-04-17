@@ -1,13 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Domain.Base.Entities;
-using YS.CMS.Domain.Base.interfaces;
+using YS.CMS.Domain.Base.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using YS.CMS.Services.Api.Models;
-using System;
-using YS.CMS.Domain.Base.Interfaces;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -17,12 +14,10 @@ namespace YS.CMS.Services.Api.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IPost _repos;
-        private readonly ICategory _reposCategory;
 
-        public PostsController(IPost repos, ICategory reposCategory)
+        public PostsController(IPost repos)
         {
             _repos = repos;
-            _reposCategory = reposCategory;
         }
 
         [HttpPost]
@@ -30,9 +25,6 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                var category = await _reposCategory.All.FirstOrDefaultAsync(c => c.Id == 1);
-                post.Category = category;
                 await _repos.CreateAsync(post);
 
                 var uri = Url.Action("Get", new { id = post.Id });
@@ -86,7 +78,7 @@ namespace YS.CMS.Services.Api.Controllers
         }
 
         [HttpPost("filter")]
-        public async Task<IEnumerable<Post>> FilterAsync(PostFilterModel filter)
+        public async Task<ActionResult<Post>> FilterAsync(PostFilterModel filter)
         {
             IQueryable<Post> query = _repos.All.AsNoTracking();
 
@@ -98,11 +90,37 @@ namespace YS.CMS.Services.Api.Controllers
             {
                 query = query.Where(p => p.Title.Contains(filter.Text));
             }
+            else if (!string.IsNullOrEmpty(filter.SubTitle))
+            {
+                query = query.Where(p => p.Title.Contains(filter.SubTitle));
+            }
+            else if (filter.Category != null)
+            {
+                query = query.Where(p => p.Category.Id == filter.Category.Id);
+            }
+            else if (filter.Author.HasValue)
+            {
+                query = query.Where(p => p.Author == filter.Author.Value);
+            }
+            else if (filter.CreateUser.HasValue)
+            {
+                query = query.Where(p => p.CreateUser == filter.CreateUser.Value);
+            }
             else if (filter.CreateDate.HasValue)
             {
                 query = query.Where(p => p.CreateDate.Date == filter.CreateDate.Value.Date);
             }
-            return await query.ToListAsync();
+            else if (filter.UpdateDate.HasValue)
+            {
+                query = query.Where(p => p.UpdateDate.Value.Date == filter.UpdateDate.Value.Date);
+            }
+            else if (filter.PublishDate.HasValue)
+            {
+                query = query.Where(p => p.PublishDate.Value.Date == filter.PublishDate.Value.Date);
+            }
+            
+            var result = await query.ToListAsync();
+            return Ok(result);
         }
     }
 }

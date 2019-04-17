@@ -8,7 +8,8 @@ using YS.CMS.Infra.Security.Model;
 namespace YS.CMS.Services.ApiAuthProvider.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:ApiVersion}/login")]
     public class LoginController : ControllerBase
     {
         private readonly UserHandler _userHandler;

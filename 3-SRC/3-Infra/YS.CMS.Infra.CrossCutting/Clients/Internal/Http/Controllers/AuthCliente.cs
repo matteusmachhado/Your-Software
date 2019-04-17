@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using YS.CMS.Infra.CrossCutting.Clients.Core.Http.Models;
+using YS.CMS.Infra.CrossCutting.Clients.Internal.Http.Models;
 using YS.CMS.Infra.Security.Model;
 
-namespace YS.CMS.Infra.CrossCutting.Clients.Core.Http.Controllers
+namespace YS.CMS.Infra.CrossCutting.Clients.Internal.Http.Controllers
 {
     public class AuthCliente
     {

@@ -1,5 +1,5 @@
 ﻿using YS.CMS.Domain.Base.Entities;
-using YS.CMS.Domain.Base.interfaces;
+using YS.CMS.Domain.Base.Interfaces;
 
 namespace YS.CMS.Infra.Data.Repository
 {

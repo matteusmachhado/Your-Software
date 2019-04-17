@@ -22,6 +22,9 @@ namespace YS.CMS.Infra.DI
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
             }).AddEntityFrameworkStores<CMSAuthContext>();
+            
+            // >_ api version
+            services.AddApiVersioning();
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using YS.CMS.Domain.Base.interfaces;
+using YS.CMS.Domain.Base.Interfaces;
 
 namespace YS.CMS.Infra.Data.Repository
 {

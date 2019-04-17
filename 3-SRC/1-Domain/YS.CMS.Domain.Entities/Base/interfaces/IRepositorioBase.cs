@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace YS.CMS.Domain.Base.interfaces
+namespace YS.CMS.Domain.Base.Interfaces
 {
     public interface IRepositorioBase<TEntity> where TEntity : class
     {

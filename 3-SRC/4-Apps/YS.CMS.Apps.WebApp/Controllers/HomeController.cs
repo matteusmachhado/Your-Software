@@ -1,15 +1,41 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Apps.WebApp.Models;
+using YS.CMS.Domain.Base.Entities;
+using YS.CMS.Infra.CrossCutting.Clients.Internal.Http.Controllers;
 
 namespace YS.CMS.Apps.WebApp.Controllers
 {
     // [Authorize]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly PostClient _api;
+        public HomeController(PostClient api)
         {
-            ViewData["Title"] = "WebApp";
+            _api = api;
+        }
+
+
+        public async Task<IActionResult> Index()
+        {
+            var post = new Post();
+            post.Title = "ok";
+            post.Text = "okok";
+            post.CreateUser = Guid.NewGuid();
+            post.Author = Guid.NewGuid();
+
+            try
+            {
+                await _api.PostAsync(post);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                BadRequest();
+            }
+
             return View();
         }
         

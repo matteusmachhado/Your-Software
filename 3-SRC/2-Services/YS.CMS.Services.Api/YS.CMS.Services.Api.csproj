@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>d9a6df53-bacb-40d8-867d-9654aecc87cf</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,10 @@
     <ProjectReference Include="..\..\1-Domain\YS.CMS.Domain.Entities\YS.CMS.Domain.csproj" />
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.CrossCutting\YS.CMS.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.DI\YS.CMS.Infra.DI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Filters\" />
   </ItemGroup>
 
 </Project>
