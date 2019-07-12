@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using YS.CMS.Services.ApiAuthProvider.Extensions;
 
 namespace YS.CMS.Services.ApiAuthProvider
@@ -25,7 +26,7 @@ namespace YS.CMS.Services.ApiAuthProvider
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -35,7 +36,8 @@ namespace YS.CMS.Services.ApiAuthProvider
             {
                 app.UseHsts();
             }
-
+            
+            loggerFactory.AddLog4Net(Configuration.GetValue<string>("Log4NetConfigFile:Name"));
             app.UseHttpsRedirection();
             app.UseMvc();
         }
