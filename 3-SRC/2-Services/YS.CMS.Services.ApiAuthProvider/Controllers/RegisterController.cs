@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security.Handler;
@@ -20,7 +21,7 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {

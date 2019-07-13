@@ -15,18 +15,15 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
     public class LoginController : ControllerBase
     {
         private readonly UserHandler _userHandler;
-        private readonly ILogger _logger;
 
-        public LoginController(SignInManager<User> signInManager, ILogger<LoginController> logger)
+        public LoginController(SignInManager<User> signInManager)
         {
             _userHandler = new UserHandler(signInManager);
-            _logger = logger;
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            _logger.LogInformation("Login:{1};Senha:********",  model.Login);
             if (ModelState.IsValid)
             {
                 var result = await _userHandler.LoginUser(model);

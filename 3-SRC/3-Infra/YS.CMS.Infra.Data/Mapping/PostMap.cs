@@ -23,7 +23,7 @@ namespace YS.CMS.Infra.Data.Mapping
                 .IsRequired();
 
             builder
-                 .Property(c => c.IsActive)
+                 .Property(c => c.Active)
                  .HasColumnType("bit")
                  .IsRequired();
             
