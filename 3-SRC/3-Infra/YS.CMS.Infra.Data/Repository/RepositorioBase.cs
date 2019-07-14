@@ -35,7 +35,7 @@ namespace YS.CMS.Infra.Data.Repository
             return _context.Set<TEntity>().AsNoTracking().AsQueryable();
         }
         
-        public async Task<TEntity> FindAsync(int id)
+        public async Task<TEntity> FindAsync(Guid id)
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
@@ -53,21 +53,24 @@ namespace YS.CMS.Infra.Data.Repository
             }
         }
 
-        public async Task<IList<TEntity>> FindAllAsync(IEnumerable<int> ids)
+        public async Task<IList<TEntity>> FindAllAsync(IEnumerable<Guid> ids)
         {
-            var TEntityList = new List<TEntity>();
+            var listTEntity = new List<TEntity>();
             
             foreach (var id in ids)
             {
                 var entity = await FindAsync(id);
                 if (entity != null)
                 {
-                    TEntityList.Add(entity);
-                    continue;
+                    listTEntity.Add(entity);
                 }
-                // logar ids não encontrados...
+                else
+                {
+                    // logar ids não encontrados...
+                }
+
             }
-            return TEntityList;
+            return listTEntity;
         }
     }
 }

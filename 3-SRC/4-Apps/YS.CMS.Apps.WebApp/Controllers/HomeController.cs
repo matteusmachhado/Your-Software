@@ -20,22 +20,6 @@ namespace YS.CMS.Apps.WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var post = new Post();
-            post.Title = "ok";
-            post.Text = "okok";
-            post.CreateUser = Guid.NewGuid();
-            post.Author = Guid.NewGuid();
-
-            try
-            {
-                await _api.PostAsync(post);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                BadRequest();
-            }
-
             return View();
         }
         

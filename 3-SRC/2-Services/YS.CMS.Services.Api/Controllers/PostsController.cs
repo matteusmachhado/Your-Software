@@ -4,7 +4,8 @@ using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using YS.CMS.Services.Api.Models;
+using YS.CMS.Services.Api.Extensions.ContentFilters;
+using System;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace YS.CMS.Services.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> New(Post post)
+        public async Task<IActionResult> NewAsync(Post post)
         {
             if (ModelState.IsValid)
             {
@@ -35,18 +36,33 @@ namespace YS.CMS.Services.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int? id)
+        public async Task<IActionResult> GetAsync(Guid id)
         {
-            if (id.HasValue)
+            var post = await _repos.FindAsync(id);
+            if (post != null)
             {
-                var post = await _repos.FindAsync(id.Value);
                 return Ok(post);
             }
-            return BadRequest();
+            return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PostsAsync([FromQuery] PostFilterModel filter, [FromQuery] PostOrderModel order)
+        {
+            var list = await _repos.All
+                .ApplyFilter(filter)
+                .ApplyOrder(order)
+                .ToListAsync();
+
+            if (list.Any())
+            {
+                return Ok(list);
+            }
+            return NoContent();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Post model)
+        public async Task<IActionResult> UpdateAsync(Post model)
         {
             if (ModelState.IsValid)
             {
@@ -61,66 +77,17 @@ namespace YS.CMS.Services.Api.Controllers
             return BadRequest();
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(Post model)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            if (ModelState.IsValid)
+            var post = await _repos.FindAsync(id);
+            if (post != null)
             {
-                var post = await _repos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == model.Id);
-                if (post != null)
-                {
-                    await _repos.DeleteAsync(model);
-                    return Ok();
-                }
-                return NoContent();
+                await _repos.DeleteAsync(post);
+                return Ok();
             }
-            return BadRequest();
+            return NoContent();
         }
 
-        [HttpPost("filter")]
-        public async Task<ActionResult<Post>> FilterAsync(PostFilterModel filter)
-        {
-            IQueryable<Post> query = _repos.All.AsNoTracking();
-
-            if (!string.IsNullOrEmpty(filter.Title))
-            {
-                query = query.Where(p => p.Title.Contains(filter.Title));
-            }
-            else if (!string.IsNullOrEmpty(filter.Text))
-            {
-                query = query.Where(p => p.Title.Contains(filter.Text));
-            }
-            else if (!string.IsNullOrEmpty(filter.SubTitle))
-            {
-                query = query.Where(p => p.Title.Contains(filter.SubTitle));
-            }
-            else if (filter.Category != null)
-            {
-                query = query.Where(p => p.Category.Id == filter.Category.Id);
-            }
-            else if (filter.Author.HasValue)
-            {
-                query = query.Where(p => p.Author == filter.Author.Value);
-            }
-            else if (filter.CreateUser.HasValue)
-            {
-                query = query.Where(p => p.CreateUser == filter.CreateUser.Value);
-            }
-            else if (filter.CreateDate.HasValue)
-            {
-                query = query.Where(p => p.CreateDate.Date == filter.CreateDate.Value.Date);
-            }
-            else if (filter.UpdateDate.HasValue)
-            {
-                query = query.Where(p => p.UpdateDate.Value.Date == filter.UpdateDate.Value.Date);
-            }
-            else if (filter.PublishDate.HasValue)
-            {
-                query = query.Where(p => p.PublishDate.Value.Date == filter.PublishDate.Value.Date);
-            }
-            
-            var result = await query.ToListAsync();
-            return Ok(result);
-        }
     }
 }

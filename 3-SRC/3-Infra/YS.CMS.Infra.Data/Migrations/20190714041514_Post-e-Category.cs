@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace YS.CMS.Infra.Data.Migrations
@@ -12,8 +11,7 @@ namespace YS.CMS.Infra.Data.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -33,20 +31,20 @@ namespace YS.CMS.Infra.Data.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     SubTitle = table.Column<string>(type: "nvarchar(256)", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CategoryId = table.Column<int>(nullable: true),
+                    CategoryId = table.Column<Guid>(nullable: true),
                     Author = table.Column<Guid>(nullable: false),
                     CreateUser = table.Column<Guid>(nullable: false),
                     UpdateUser = table.Column<Guid>(nullable: true),
                     CreateDate = table.Column<DateTime>(type: "DateTime", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "DateTime", nullable: true),
                     PublishDate = table.Column<DateTime>(type: "DateTime", nullable: true),
-                    DeleteDate = table.Column<DateTime>(type: "DateTime", nullable: true)
+                    DeleteDate = table.Column<DateTime>(type: "DateTime", nullable: true),
+                    RecycleDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

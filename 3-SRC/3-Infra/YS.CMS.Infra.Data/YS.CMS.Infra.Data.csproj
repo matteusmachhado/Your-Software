@@ -5,18 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20190414220805_Add-Post-and-Category.cs" />
-    <Compile Remove="Migrations\20190414221138_Add-Post-and-Category.cs" />
-    <Compile Remove="Migrations\20190414224245_Add-Post-and-Category.cs" />
-    <Compile Remove="Migrations\20190415122226_PostCategory.cs" />
-    <Compile Remove="Migrations\20190415125009_PostCategory.cs" />
-    <Compile Remove="Migrations\20190415132320_PostCategory.cs" />
-    <Compile Remove="Migrations\20190416230743_Post-e-Category.cs" />
-    <Compile Remove="Migrations\20190416233507_Post-e-Category.cs" />
-    <Compile Remove="Migrations\20190416233654_Post-e-Category.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1" />
   </ItemGroup>

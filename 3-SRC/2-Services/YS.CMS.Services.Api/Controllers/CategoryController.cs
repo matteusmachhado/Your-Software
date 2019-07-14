@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using YS.CMS.Domain.Base.Entities;
 using Microsoft.EntityFrameworkCore;
 using YS.CMS.Domain.Base.Interfaces;
+using System;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -33,11 +34,11 @@ namespace YS.CMS.Services.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int? id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            if (id.HasValue)
+            var category = await _repos.FindAsync(id);
+            if (category != null)
             {
-                var category = await _repos.FindAsync(id.Value);
                 return Ok(category);
             }
             return BadRequest();
