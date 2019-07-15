@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Base.Entities;
@@ -15,7 +16,6 @@ namespace YS.CMS.Infra.Data.Repository
         {
             _context = context;
         }
-
         public async Task<Post> FindWithCategories(Guid id)
         {
             return await _context

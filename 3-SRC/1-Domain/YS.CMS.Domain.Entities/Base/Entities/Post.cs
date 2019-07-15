@@ -10,7 +10,7 @@ namespace YS.CMS.Domain.Base.Entities
         public string SubTitle { get; set; }
         public string Text { get; set; }
         public bool IsActive { get; set; }
-        public IList<PostCategory> Categories { get; set; }
+        public IList<PostCategory> Categories { get; private set; }
         public Guid Author { get; set; }
         public Guid CreateUser { get; set; }
         public Guid? UpdateUser { get; set; }
@@ -50,9 +50,23 @@ namespace YS.CMS.Domain.Base.Entities
             this.RecycleDate = DateTime.Now;
         }
 
-        public void AddCategory(Category category)
+        public void AddRangeCategory(params Category[] categories)
         {
-            this.Categories.Add(new PostCategory() { Category = category });
+            foreach (var category in categories)
+            {
+                this.Categories.Add(new PostCategory() { Category = category });
+            }
+        }
+        public void RemoveRengeCategory(params Category[] categories)
+        {
+            foreach (var category in categories)
+            {
+                this.Categories.Remove(new PostCategory() { Category = category });
+            }
+        }
+        public void RemoveAllCategories()
+        {
+            this.Categories.Clear();
         }
     }
 }

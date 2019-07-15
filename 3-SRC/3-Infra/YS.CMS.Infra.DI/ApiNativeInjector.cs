@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Common.Models.Results;
+using YS.CMS.Common.Models.Views;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.Interfaces;
 using YS.CMS.Infra.Data;
@@ -41,7 +42,7 @@ namespace YS.CMS.Infra.DI
             // >_ AutoMapper
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {                                                              // >_ Ignore recursive (recursive) 
-                cfg.CreateMap<Post, PostResultModel>().ForMember(p => p.Categories, pr => pr.Ignore()); 
+                cfg.CreateMap<Post, PostResultModel>().ForMember(p => p.Categories, pr => pr.Ignore());
                 cfg.CreateMap<Category, CategoryResultModel>().ForMember(p => p.Posts, pr => pr.Ignore());
             });
             IMapper mapper = config.CreateMapper();

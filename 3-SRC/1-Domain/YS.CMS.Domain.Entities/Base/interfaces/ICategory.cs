@@ -4,6 +4,6 @@ namespace YS.CMS.Domain.Base.Interfaces
 {
     public interface ICategory : IRepositorioBase<Category>
     {
-        
+
     }
 }

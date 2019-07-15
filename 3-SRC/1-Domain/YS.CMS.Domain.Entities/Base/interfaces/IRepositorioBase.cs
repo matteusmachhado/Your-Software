@@ -13,6 +13,6 @@ namespace YS.CMS.Domain.Base.Interfaces
         Task CreateAsync(params TEntity[] obj);
         Task UpdateAsync(params TEntity[] obj);
         Task DeleteAsync(params TEntity[] obj);
-        Task<IList<TEntity>> FindAllAsync(IEnumerable<Guid> ids);
+        Task<IList<TEntity>> FindAllAsync(params Guid[] ids);
     }
 }

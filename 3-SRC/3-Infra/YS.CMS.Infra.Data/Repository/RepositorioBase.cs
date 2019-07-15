@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using log4net.Core;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Base.Interfaces;
 
@@ -53,10 +55,9 @@ namespace YS.CMS.Infra.Data.Repository
             }
         }
 
-        public async Task<IList<TEntity>> FindAllAsync(IEnumerable<Guid> ids)
+        public async Task<IList<TEntity>> FindAllAsync(Guid[] ids)
         {
             var listTEntity = new List<TEntity>();
-            
             foreach (var id in ids)
             {
                 var entity = await FindAsync(id);
@@ -64,11 +65,6 @@ namespace YS.CMS.Infra.Data.Repository
                 {
                     listTEntity.Add(entity);
                 }
-                else
-                {
-                    // logar ids não encontrados...
-                }
-
             }
             return listTEntity;
         }

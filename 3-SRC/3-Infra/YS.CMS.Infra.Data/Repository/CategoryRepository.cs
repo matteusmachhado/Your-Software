@@ -1,4 +1,7 @@
-﻿using YS.CMS.Domain.Base.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.Interfaces;
 
 namespace YS.CMS.Infra.Data.Repository
@@ -11,5 +14,7 @@ namespace YS.CMS.Infra.Data.Repository
         {
             _context = context;
         }
+
+        
     }
 }

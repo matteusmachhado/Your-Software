@@ -10,9 +10,7 @@ namespace YS.CMS.Infra.Security.Handler
 {
     public class TokenJWTHandler
     {
-        private readonly string securityKey = "ys-cms-wabapi-authentication-provider-valid";
-
-        public string GeneratorToken(LoginModel model)
+        public string GeneratorToken(LoginModel model, string securityKey, string issuer, string audience, double expiresMinutes)
         {
             var direitos = new List<Claim>
             {
@@ -24,11 +22,11 @@ namespace YS.CMS.Infra.Security.Handler
             var credenciais = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: "YS.CMS.Apps.WebApp",
-                audience: "Postman",
+                issuer: issuer,
+                audience: audience,
                 claims: direitos,
                 signingCredentials: credenciais,
-                expires: DateTime.UtcNow.AddMinutes(30)
+                expires: DateTime.UtcNow.AddMinutes(expiresMinutes)
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);

@@ -17,11 +17,13 @@ namespace YS.CMS.Services.Api.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IPost _repos;
+        private readonly ICategory _reposCategory;
         private readonly IMapper _mapper;
 
-        public PostsController(IPost repos, IMapper mapper)
+        public PostsController(IPost repos, IMapper mapper, ICategory reposCategory)
         {
             _repos = repos;
+            _reposCategory = reposCategory;
             _mapper = mapper;
         }
 
@@ -30,25 +32,25 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var categoria1 = new Category("Categoria Final");
-                var categoria2 = new Category("Categoria Final");
-                post.AddCategory(categoria1);
-                post.AddCategory(categoria2);
+               if (post.Categories.Any())
+                {
+                    var arrayCategories = post.Categories.Select(c => c.Category.Id).ToArray();
+                    post.RemoveAllCategories();
+                    var categories = await _reposCategory.FindAllAsync(arrayCategories);
+                    post.AddRangeCategory(categories.ToArray());
+                }
 
                 await _repos.CreateAsync(post);
-                
-                var resultModelPost = _mapper.Map<PostResultModel>(post);
-                if (post.Categories.Any())
+                var postResultModel = _mapper.Map<PostResultModel>(post);
+
+                post.Categories.ToList().ForEach(c =>
                 {
-                    foreach (var itemCategoryPost in post.Categories)
-                    {
-                        var category = _mapper.Map<CategoryResultModel>(itemCategoryPost.Category);
-                        resultModelPost.Categories.Add(category);
-                    }
-                }
-                
-                var uri = Url.Action("GetAsync", new { id = resultModelPost.Id });
-                return Created(uri, resultModelPost);
+                   var category = _mapper.Map<CategoryResultModel>(c.Category);
+                    postResultModel.Categories.Add(category);
+                });
+
+                var uri = Url.Action("GetAsync", new { id = postResultModel.Id });
+                return Created(uri, postResultModel);
 
             }
             return BadRequest();
