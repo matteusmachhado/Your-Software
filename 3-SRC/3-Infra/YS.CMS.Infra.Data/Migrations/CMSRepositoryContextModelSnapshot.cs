@@ -61,8 +61,6 @@ namespace YS.CMS.Infra.Data.Migrations
 
                     b.Property<Guid>("Author");
 
-                    b.Property<Guid?>("CategoryId");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("DateTime");
 
@@ -97,16 +95,33 @@ namespace YS.CMS.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("YS.CMS.Domain.Base.Entities.Post", b =>
+            modelBuilder.Entity("YS.CMS.Domain.Base.Entities.PostCategory", b =>
+                {
+                    b.Property<Guid>("PostId");
+
+                    b.Property<Guid>("CategoryId");
+
+                    b.HasKey("PostId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("PostCategory");
+                });
+
+            modelBuilder.Entity("YS.CMS.Domain.Base.Entities.PostCategory", b =>
                 {
                     b.HasOne("YS.CMS.Domain.Base.Entities.Category", "Category")
                         .WithMany("Posts")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("YS.CMS.Domain.Base.Entities.Post", "Post")
+                        .WithMany("Categories")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

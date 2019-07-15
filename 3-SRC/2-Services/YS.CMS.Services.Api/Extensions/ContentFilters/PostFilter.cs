@@ -25,7 +25,7 @@ namespace YS.CMS.Services.Api.Extensions.ContentFilters
                 }
                 if (filter.Category.HasValue)
                 {
-                    query = query.Where(p => p.Category.Id == filter.Category);
+                    // query = query.Where(p => p.Category.Id == filter.Category);
                 }
                 if (filter.Author.HasValue)
                 {

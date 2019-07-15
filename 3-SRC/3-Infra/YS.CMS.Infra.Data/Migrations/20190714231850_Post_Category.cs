@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace YS.CMS.Infra.Data.Migrations
 {
-    public partial class PosteCategory : Migration
+    public partial class Post_Category : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,6 @@ namespace YS.CMS.Infra.Data.Migrations
                     SubTitle = table.Column<string>(type: "nvarchar(256)", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(1000)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CategoryId = table.Column<Guid>(nullable: true),
                     Author = table.Column<Guid>(nullable: false),
                     CreateUser = table.Column<Guid>(nullable: false),
                     UpdateUser = table.Column<Guid>(nullable: true),
@@ -49,27 +48,48 @@ namespace YS.CMS.Infra.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PostCategory",
+                columns: table => new
+                {
+                    PostId = table.Column<Guid>(nullable: false),
+                    CategoryId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostCategory", x => new { x.PostId, x.CategoryId });
                     table.ForeignKey(
-                        name: "FK_Posts_Categories_CategoryId",
+                        name: "FK_PostCategory_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PostCategory_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_CategoryId",
-                table: "Posts",
+                name: "IX_PostCategory_CategoryId",
+                table: "PostCategory",
                 column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "PostCategory");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Posts");
         }
     }
 }

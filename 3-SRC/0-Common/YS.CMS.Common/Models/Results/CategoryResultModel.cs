@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YS.CMS.Domain.Base.Entities
+namespace YS.CMS.Common.Models.Results
 {
-    public class Category : EntityBase
+    public class CategoryResultModel
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
-        public IList<PostCategory> Posts { get; set; }
+        public IList<PostResultModel> Posts { get; set; }
         public Guid CreateUser { get; set; }
         public Guid? UpdateUser { get; set; }
         public DateTime CreateDate { get; set; }
@@ -16,13 +17,9 @@ namespace YS.CMS.Domain.Base.Entities
         public DateTime? PublishDate { get; set; }
         public DateTime? DeleteDate { get; set; }
 
-        public Category(string name)
+        public CategoryResultModel()
         {
-            this.Id = Guid.NewGuid();
-            this.IsActive = true;
-            this.CreateDate = DateTime.Now;
-            this.Name = name;
+            this.Posts = new List<PostResultModel>();
         }
-
     }
 }

@@ -1,15 +1,16 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace YS.CMS.Domain.Base.Entities
 {
     public class Post : EntityBase
     {
-        public string Title { get; private set; }
-        public string SubTitle { get; private set; }
-        public string Text { get; private set; }
-        public bool IsActive { get; private set; }
-        public Category Category { get; private set; }
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public string Text { get; set; }
+        public bool IsActive { get; set; }
+        public IList<PostCategory> Categories { get; set; }
         public Guid Author { get; set; }
         public Guid CreateUser { get; set; }
         public Guid? UpdateUser { get; set; }
@@ -19,16 +20,24 @@ namespace YS.CMS.Domain.Base.Entities
         public DateTime? DeleteDate { get; set; }
         public DateTime? RecycleDate { get; set; }
 
-        public Post()
+        public Post(string title, string text)
         {
             this.Id = Guid.NewGuid();
             this.IsActive = true;
             this.CreateDate = DateTime.Now;
+            this.Title = title;
+            this.Text = text;
+            this.Categories = new List<PostCategory>();
         }
 
         public void SetTitle(string title)
         {
             this.Title = title;
+        }
+
+        public void SetText(string text)
+        {
+            this.Text = text;
         }
 
         public void SetActive(bool active) {
@@ -39,6 +48,11 @@ namespace YS.CMS.Domain.Base.Entities
         {
             this.IsActive = false;
             this.RecycleDate = DateTime.Now;
+        }
+
+        public void AddCategory(Category category)
+        {
+            this.Categories.Add(new PostCategory() { Category = category });
         }
     }
 }

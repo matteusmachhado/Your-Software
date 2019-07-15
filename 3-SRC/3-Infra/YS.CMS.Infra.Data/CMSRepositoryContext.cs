@@ -23,6 +23,9 @@ namespace YS.CMS.Infra.Data
         {
             modelBuilder.ApplyConfiguration<Post>(new PostMap());
             modelBuilder.ApplyConfiguration<Category>(new CategoryMap());
+            modelBuilder
+                .Entity<PostCategory>()
+                .HasKey(pc => new { pc.PostId, pc.CategoryId }); // >_ Many to Many with chave composta;
             base.OnModelCreating(modelBuilder);
         }
     }
