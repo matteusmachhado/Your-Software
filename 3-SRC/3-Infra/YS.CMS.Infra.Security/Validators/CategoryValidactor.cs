@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
-using YS.CMS.Domain.Base.Entities;
+using YS.CMS.Common.Models;
 
 namespace YS.CMS.Infra.Security.Validators
 {
-    public class CategoryValidactor : AbstractValidator<Category>
+    public class CategoryValidactor : AbstractValidator<CategoryViewModel>
     {
         public CategoryValidactor()
         {
             RuleFor(c => c.Name).NotEmpty();
-            // RuleFor(c => c.CreateUser).NotEmpty();
+            RuleFor(c => c.CreateUser).NotEmpty();
         }
     }
 }

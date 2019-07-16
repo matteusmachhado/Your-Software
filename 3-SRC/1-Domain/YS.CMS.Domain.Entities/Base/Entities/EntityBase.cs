@@ -6,6 +6,6 @@ namespace YS.CMS.Domain.Base.Entities
     public abstract class EntityBase 
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
     }
 }

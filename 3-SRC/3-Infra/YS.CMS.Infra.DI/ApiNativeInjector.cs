@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using YS.CMS.Common.Models.Results;
-using YS.CMS.Common.Models.Views;
+using YS.CMS.Common.Models;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.Interfaces;
 using YS.CMS.Infra.Data;
@@ -33,17 +31,21 @@ namespace YS.CMS.Infra.DI
             }).AddFluentValidation();
 
             // >_ add validators
-            services.AddTransient<IValidator<Post>, PostValidator>();
-            services.AddTransient<IValidator<Category>, CategoryValidactor>();
+            services.AddTransient<IValidator<PostViewModel>, PostValidator>();
+            services.AddTransient<IValidator<CategoryViewModel>, CategoryValidactor>();
             
             // >_ api version
             services.AddApiVersioning();
 
             // >_ AutoMapper
-            var config = new AutoMapper.MapperConfiguration(cfg =>
-            {                                                              // >_ Ignore recursive (recursive) 
-                cfg.CreateMap<Post, PostResultModel>().ForMember(p => p.Categories, pr => pr.Ignore());
-                cfg.CreateMap<Category, CategoryResultModel>().ForMember(p => p.Posts, pr => pr.Ignore());
+            var config = new MapperConfiguration(cfg =>
+            {
+            cfg.CreateMap<PostViewModel, Post>()
+            .ForMember(p => p.Categories, pp => pp.Ignore())
+            .ForMember(p => p.Id, pp => pp.Condition((mode, entity) => { return entity.Id == null; } ));
+
+                cfg.CreateMap<CategoryViewModel, Category>()
+                .ForMember(p => p.Posts, pr => pr.Ignore()); // >_ Many-To-Many Ignore to recursive.
             });
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);

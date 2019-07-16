@@ -7,7 +7,7 @@ using System.Linq;
 using YS.CMS.Services.Api.Extensions.ContentFilters;
 using System;
 using AutoMapper;
-using YS.CMS.Common.Models.Results;
+using YS.CMS.Common.Models;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -28,29 +28,30 @@ namespace YS.CMS.Services.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> NewAsync(Post post)
+        public async Task<IActionResult> NewAsync(PostViewModel modelPost)
         {
             if (ModelState.IsValid)
             {
-               if (post.Categories.Any())
+                var newPost = _mapper.Map<Post>(modelPost);
+                if (modelPost.Categories.Any())
                 {
-                    var arrayCategories = post.Categories.Select(c => c.Category.Id).ToArray();
-                    post.RemoveAllCategories();
-                    var categories = await _reposCategory.FindAllAsync(arrayCategories);
-                    post.AddRangeCategory(categories.ToArray());
+                    var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Select(c => c.Id).ToArray());
+                    if (categories.Any())
+                    {
+                        newPost.AddRangeCategory(categories.ToArray());
+                    }
                 }
-
-                await _repos.CreateAsync(post);
-                var postResultModel = _mapper.Map<PostResultModel>(post);
-
-                post.Categories.ToList().ForEach(c =>
+                try
                 {
-                   var category = _mapper.Map<CategoryResultModel>(c.Category);
-                    postResultModel.Categories.Add(category);
-                });
-
-                var uri = Url.Action("GetAsync", new { id = postResultModel.Id });
-                return Created(uri, postResultModel);
+                    await _repos.CreateAsync(newPost);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Mesagem:{e.Message}");
+                }
+                
+                var uri = Url.Action("GetAsync", new { id = newPost.Id });
+                return Created(uri, modelPost);
 
             }
             return BadRequest();

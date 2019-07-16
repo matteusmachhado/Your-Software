@@ -14,7 +14,5 @@ namespace YS.CMS.Infra.Data.Repository
         {
             _context = context;
         }
-
-        
     }
 }
