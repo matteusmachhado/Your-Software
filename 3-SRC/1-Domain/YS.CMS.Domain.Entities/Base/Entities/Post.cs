@@ -19,12 +19,14 @@ namespace YS.CMS.Domain.Base.Entities
         public DateTime? PublishDate { get; set; }
         public DateTime? DeleteDate { get; set; }
         public DateTime? RecycleDate { get; set; }
-        public Post()
+        public Post(string title, string text )
         {
             this.Id = Guid.NewGuid();
             this.IsActive = true;
             this.CreateDate = DateTime.Now;
             this.Categories = new List<PostCategory>();
+            this.Title = title;
+            this.Text = text;
         }
         public void SetTitle(string title)
         {

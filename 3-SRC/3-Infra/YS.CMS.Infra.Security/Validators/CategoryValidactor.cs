@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using YS.CMS.Common.Models;
+using YS.CMS.Common.Models.View;
 
 namespace YS.CMS.Infra.Security.Validators
 {

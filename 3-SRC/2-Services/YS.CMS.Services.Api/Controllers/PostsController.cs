@@ -7,7 +7,8 @@ using System.Linq;
 using YS.CMS.Services.Api.Extensions.ContentFilters;
 using System;
 using AutoMapper;
-using YS.CMS.Common.Models;
+using YS.CMS.Common.Models.View;
+using YS.CMS.Common.Models.Result;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -32,26 +33,26 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var newPost = _mapper.Map<Post>(modelPost);
+                var newPost = _mapper.Map<PostViewModel, Post>(modelPost, opt => 
+                {
+                    opt.ConstructServicesUsing(x => new Post(modelPost.Title, modelPost.Title)); // >_ use construct. (before mapping)
+                }); 
+
                 if (modelPost.Categories.Any())
                 {
-                    var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Select(c => c.Id).ToArray());
+                    var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Where(c => c.Id.HasValue).Select(c => c.Id.Value).ToArray());
                     if (categories.Any())
                     {
                         newPost.AddRangeCategory(categories.ToArray());
                     }
                 }
-                try
-                {
-                    await _repos.CreateAsync(newPost);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Mesagem:{e.Message}");
-                }
+
+                await _repos.CreateAsync(newPost);
+
+                var resultPost = _mapper.Map<PostResultModel>(newPost);
                 
                 var uri = Url.Action("GetAsync", new { id = newPost.Id });
-                return Created(uri, modelPost);
+                return Created(uri, resultPost);
 
             }
             return BadRequest();

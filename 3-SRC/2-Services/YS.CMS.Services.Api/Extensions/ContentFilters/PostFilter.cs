@@ -41,7 +41,7 @@ namespace YS.CMS.Services.Api.Extensions.ContentFilters
                 }
                 if (filter.CreateDate.HasValue)
                 {
-                    query = query.Where(p => p.CreateDate.Date.CompareTo(filter.CreateDate.Value.Date) == 0);
+                   // query = query.Where(p => p.CreateDate.Date.CompareTo(filter.CreateDate.Value.Date) == 0);
                 }
                 if (filter.UpdateDate.HasValue)
                 {
