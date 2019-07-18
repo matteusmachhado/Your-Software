@@ -33,11 +33,8 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var newPost = _mapper.Map<PostViewModel, Post>(modelPost, opt => 
-                {
-                    opt.ConstructServicesUsing(x => new Post(modelPost.Title, modelPost.Title)); // >_ use construct. (before mapping)
-                }); 
-
+                var newPost = _mapper.Map<PostViewModel, Post>(modelPost, opt => opt.ConstructServicesUsing(x => new Post(modelPost.Title, modelPost.Title)));
+                
                 if (modelPost.Categories.Any())
                 {
                     var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Where(c => c.Id.HasValue).Select(c => c.Id.Value).ToArray());
@@ -49,10 +46,8 @@ namespace YS.CMS.Services.Api.Controllers
 
                 await _repos.CreateAsync(newPost);
 
-                var resultPost = _mapper.Map<PostResultModel>(newPost);
-                
                 var uri = Url.Action("GetAsync", new { id = newPost.Id });
-                return Created(uri, resultPost);
+                return Created(uri, newPost);
 
             }
             return BadRequest();

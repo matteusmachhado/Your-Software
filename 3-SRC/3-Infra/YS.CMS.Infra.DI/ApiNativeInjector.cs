@@ -17,6 +17,12 @@ namespace YS.CMS.Infra.DI
     {
         public static void RegisterServices(IServiceCollection services, string connectionString)
         {
+            services.AddMvc()
+                .AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
             services.AddDbContext<CMSRepositoryContext>(options =>
             {
                 options.UseSqlServer(connectionString);
@@ -38,25 +44,27 @@ namespace YS.CMS.Infra.DI
             // >_ api version
             services.AddApiVersioning();
 
-            // >_ AutoMapper
+            // >_ Configs AutoMapper
+            #region
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<PostViewModel, Post>()
                 .ForMember(p => p.Id, pp => pp.Ignore())
-                .ForMember(p => p.Categories, pp => pp.Ignore()); // >_ Many-To-Many Ignore to recursive.
+                .ForMember(p => p.Categories, pp => pp.Ignore());
                 
                 cfg.CreateMap<CategoryViewModel, Category>()
                 .ForMember(c => c.Id, cc => cc.Ignore())
-                .ForMember(c => c.Posts, cc => cc.Ignore()); // >_ Many-To-Many Ignore to recursive.
+                .ForMember(c => c.Posts, cc => cc.Ignore()); 
 
                 cfg.CreateMap<Post, PostResultModel>()
-                .ForMember(p => p.Categories, pp => pp.Ignore()); // >_ Many-To-Many Ignore to recursive.
+                .ForMember(p => p.Categories, pp => pp.Ignore());
 
                 cfg.CreateMap<CategoryResultModel, Category>()
-               .ForMember(p => p.Posts, pp => pp.Ignore()); // >_ Many-To-Many Ignore to recursive.
+               .ForMember(p => p.Posts, pp => pp.Ignore()); 
             });
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+            #endregion
         }
     }
 }
