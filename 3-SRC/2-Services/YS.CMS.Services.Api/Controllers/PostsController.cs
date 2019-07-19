@@ -9,6 +9,7 @@ using System;
 using AutoMapper;
 using YS.CMS.Common.Models.View;
 using YS.CMS.Common.Models.Result;
+using Microsoft.AspNetCore.Http;
 
 namespace YS.CMS.Services.Api.Controllers
 {
@@ -20,12 +21,14 @@ namespace YS.CMS.Services.Api.Controllers
         private readonly IPost _repos;
         private readonly ICategory _reposCategory;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _accessor;
 
-        public PostsController(IPost repos, IMapper mapper, ICategory reposCategory)
+        public PostsController(IPost repos, IMapper mapper, ICategory reposCategory, IHttpContextAccessor accessor)
         {
             _repos = repos;
             _reposCategory = reposCategory;
             _mapper = mapper;
+            _accessor = accessor;
         }
 
         [HttpPost]
@@ -43,6 +46,8 @@ namespace YS.CMS.Services.Api.Controllers
                         newPost.AddRangeCategory(categories.ToArray());
                     }
                 }
+
+                var currentUser = _accessor.HttpContext.User;
 
                 await _repos.CreateAsync(newPost);
 

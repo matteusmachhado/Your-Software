@@ -23,6 +23,8 @@ namespace YS.CMS.Infra.DI
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
+            services.AddHttpContextAccessor();
+
             services.AddDbContext<CMSRepositoryContext>(options =>
             {
                 options.UseSqlServer(connectionString);

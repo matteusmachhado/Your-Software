@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security;
+using YS.CMS.Infra.Security.Manager;
 
 namespace YS.CMS.Infra.DI
 {
@@ -21,7 +22,9 @@ namespace YS.CMS.Infra.DI
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
-            }).AddEntityFrameworkStores<CMSAuthContext>();
+            })
+            .AddSignInManager<UserManager>()
+            .AddEntityFrameworkStores<CMSAuthContext>();
             
             // >_ api version
             services.AddApiVersioning();
