@@ -4,7 +4,7 @@ using YS.CMS.Domain.Base.Entities;
 
 namespace YS.CMS.Infra.Security
 {
-    public class CMSAuthContext : IdentityDbContext<User>
+    public class CMSAuthContext : IdentityDbContext<ApplicationUser>
     {
         public CMSAuthContext(DbContextOptions<CMSAuthContext> dbContext) : base(dbContext)
         {

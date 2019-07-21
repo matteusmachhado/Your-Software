@@ -17,8 +17,7 @@ namespace YS.CMS.Apps.WebApp.Controllers
             _api = api;
         }
 
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }

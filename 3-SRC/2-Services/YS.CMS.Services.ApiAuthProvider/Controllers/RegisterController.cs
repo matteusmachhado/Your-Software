@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper.Configuration;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Base.Entities;
-using YS.CMS.Infra.Security.Handler;
+using YS.CMS.Infra.Security.Manager;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Services.ApiAuthProvider.Controllers
@@ -13,11 +12,13 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
     [Route("api/v{version:ApiVersion}/register")]
     public class RegisterController : ControllerBase
     {
-        private readonly UserHandler _userHandler;
+        private readonly UserManager _userManager;
+        private readonly UserSignInManager _userSignInManager;
 
-        public RegisterController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public RegisterController(UserManager userManager, UserSignInManager userSignInManager)
         {
-            _userHandler = new UserHandler(userManager, signInManager);
+            _userManager = userManager;
+            _userSignInManager = userSignInManager;
         }
 
         [HttpPost]
@@ -25,13 +26,14 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _userHandler.RegisterUser(model);
-
-                if(result.Succeeded)
+                var user = new ApplicationUser() { UserName = model.Login };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
                 {
-                    return Ok(result);
+                    await _userSignInManager.SignInAsync(user, isPersistent: model.IsPersistent.Value);
+                    return Ok();
                 }
-                // >_ sem retorno por segurança.
+                return BadRequest(new { Description = "Error in create user." }); // >_ Erro genérico por segurança.
             }
             return BadRequest();
         }

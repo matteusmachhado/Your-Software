@@ -4,9 +4,11 @@ using YS.CMS.Domain.Base.Entities;
 using Microsoft.EntityFrameworkCore;
 using YS.CMS.Domain.Base.Interfaces;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace YS.CMS.Services.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:ApiVersion}/categories")]

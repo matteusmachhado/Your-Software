@@ -11,5 +11,13 @@ namespace YS.CMS.Infra.Security.Model
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "Persistir login.")]
+        public bool? IsPersistent { get; set; }
+
+        [Required]
+        [Display(Name = "Bloqueio por falha.")]
+        public bool? LockoutOnFailure { get; set; }
     }
 }

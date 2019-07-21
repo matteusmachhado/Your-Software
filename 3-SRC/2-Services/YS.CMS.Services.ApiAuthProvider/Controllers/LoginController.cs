@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Infra.Security.Handler;
+using YS.CMS.Infra.Security.Manager;
 using YS.CMS.Infra.Security.Model;
 
 namespace YS.CMS.Services.ApiAuthProvider.Controllers
@@ -13,12 +12,12 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
     [Route("api/v{version:ApiVersion}/login")]
     public class LoginController : ControllerBase
     {
-        private readonly UserHandler _userHandler;
+        private readonly UserSignInManager _userSignInManager;
         private readonly IConfiguration _configuration;
 
-        public LoginController(SignInManager<User> signInManager, IConfiguration configuration)
+        public LoginController(UserSignInManager userSignInManager, IConfiguration configuration)
         {
-            _userHandler = new UserHandler(signInManager);
+            _userSignInManager = userSignInManager;
             _configuration = configuration;
         }
 
@@ -27,7 +26,12 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _userHandler.LoginUser(model);
+                var result = await _userSignInManager.PasswordSignInAsync(
+                    model.Login, 
+                    model.Password, 
+                    isPersistent: model.IsPersistent.Value, 
+                    lockoutOnFailure: model.LockoutOnFailure.Value);
+
                 if (result.Succeeded)
                 {
                     var token = new TokenJWTHandler().GeneratorToken(model, 

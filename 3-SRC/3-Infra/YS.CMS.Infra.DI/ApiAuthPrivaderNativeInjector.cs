@@ -16,14 +16,15 @@ namespace YS.CMS.Infra.DI
                 options.UseSqlServer(connnectionString);
             });
 
-            services.AddIdentity<User, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 3;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
             })
-            .AddSignInManager<UserManager>()
+            .AddUserManager<UserManager>()
+            .AddSignInManager<UserSignInManager>()
             .AddEntityFrameworkStores<CMSAuthContext>();
             
             // >_ api version

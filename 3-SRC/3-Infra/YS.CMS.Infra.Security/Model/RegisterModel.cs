@@ -5,6 +5,7 @@ namespace YS.CMS.Infra.Security.Model
     public class RegisterModel
     {
         [Required]
+        [Display(Name = "Login")]
         public string Login { get; set; }
 
         [Required]
@@ -16,5 +17,9 @@ namespace YS.CMS.Infra.Security.Model
         [Display(Name = "Confirmação de senha")]
         [Compare("Password", ErrorMessage = "Senha e confirmação são diferentes.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Persistir login.")]
+        public bool? IsPersistent { get; set; }
     }
 }

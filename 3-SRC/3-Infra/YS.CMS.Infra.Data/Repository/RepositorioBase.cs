@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using YS.CMS.Domain.Base.Interfaces;
 
@@ -44,15 +43,8 @@ namespace YS.CMS.Infra.Data.Repository
 
         public async Task UpdateAsync(params TEntity[] objs)
         {
-            try
-            {
-                _context.Set<TEntity>().UpdateRange(objs);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            _context.Set<TEntity>().UpdateRange(objs);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IList<TEntity>> FindAllAsync(Guid[] ids)

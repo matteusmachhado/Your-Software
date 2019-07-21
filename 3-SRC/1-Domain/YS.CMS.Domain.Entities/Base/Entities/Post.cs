@@ -6,27 +6,27 @@ namespace YS.CMS.Domain.Base.Entities
 {
     public class Post : EntityBase
     {
-        public string Title { get; set; }
-        public string SubTitle { get; set; }
-        public string Text { get; set; }
+        public string Title { get; private set; }
+        public string SubTitle { get; private set; }
+        public string Text { get; private set; }
         public bool IsActive { get; private set; }
         public IList<PostCategory> Categories { get; private set; }
-        public Guid Author { get; set; }
-        public Guid CreateUser { get; set; }
-        public Guid? UpdateUser { get; set; }
+        public Guid Author { get; private set; }
+        public Guid CreateUser { get; private set; }
+        public Guid? UpdateUser { get; private set; }
         public DateTime CreateDate { get; private set; }
-        public DateTime? UpdateDate { get; set; }
-        public DateTime? PublishDate { get; set; }
-        public DateTime? DeleteDate { get; set; }
-        public DateTime? RecycleDate { get; set; }
-        public Post(string title, string text )
+        public DateTime? UpdateDate { get; private set; }
+        public DateTime? PublishDate { get; private set; }
+        public DateTime? DeleteDate { get; private set; }
+        public DateTime? RecycleDate { get; private set; }
+        public Post(string title, string text)
         {
             this.Id = Guid.NewGuid();
+            this.Title = title;
+            this.Text = text;
             this.IsActive = true;
             this.CreateDate = DateTime.Now;
             this.Categories = new List<PostCategory>();
-            this.Title = title;
-            this.Text = text;
         }
         public void SetTitle(string title)
         {
@@ -61,6 +61,10 @@ namespace YS.CMS.Domain.Base.Entities
         public void RemoveAllCategories()
         {
             this.Categories.Clear();
+        }
+        public void SetCreateUser(Guid userGuid)
+        {
+            this.CreateUser = userGuid;
         }
     }
 }

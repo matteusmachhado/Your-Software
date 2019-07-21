@@ -8,11 +8,15 @@ using YS.CMS.Services.Api.Extensions.ContentFilters;
 using System;
 using AutoMapper;
 using YS.CMS.Common.Models.View;
-using YS.CMS.Common.Models.Result;
 using Microsoft.AspNetCore.Http;
+using YS.CMS.Infra.Security.Manager;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace YS.CMS.Services.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:ApiVersion}/posts")]
@@ -36,18 +40,20 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUser = _accessor.HttpContext.User.Claims.First(c => c.Type == "Token").Value;
+
                 var newPost = _mapper.Map<PostViewModel, Post>(modelPost, opt => opt.ConstructServicesUsing(x => new Post(modelPost.Title, modelPost.Title)));
-                
+
                 if (modelPost.Categories.Any())
                 {
-                    var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Where(c => c.Id.HasValue).Select(c => c.Id.Value).ToArray());
+                    var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Where(c => c.HasValue).Select(c => c.Value).ToArray());
                     if (categories.Any())
                     {
                         newPost.AddRangeCategory(categories.ToArray());
                     }
                 }
 
-                var currentUser = _accessor.HttpContext.User;
+                //newPost.SetCreateUser(Guid.Parse(currentUser.Id));
 
                 await _repos.CreateAsync(newPost);
 

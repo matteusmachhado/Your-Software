@@ -37,7 +37,9 @@ namespace YS.CMS.Services.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
+            app.UseAuthentication();
+
             app.UseMvc();
         }
     }

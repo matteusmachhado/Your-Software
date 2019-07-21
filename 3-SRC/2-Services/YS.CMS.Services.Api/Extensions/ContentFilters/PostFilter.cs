@@ -33,7 +33,7 @@ namespace YS.CMS.Services.Api.Extensions.ContentFilters
                 }
                 if (filter.CreateUser.HasValue)
                 {
-                    query = query.Where(p => p.CreateUser == filter.CreateUser);
+                    // query = query.Where(p => p.CreateUser == filter.CreateUser);
                 }
                 if (filter.UpdateUser.HasValue)
                 {

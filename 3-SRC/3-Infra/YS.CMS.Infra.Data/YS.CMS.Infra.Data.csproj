@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190714231850_Post_Category.cs" />
+    <Compile Remove="Migrations\20190714231850_Post_Category.Designer.cs" />
+    <Compile Remove="Migrations\20190721004359_Post.cs" />
+    <Compile Remove="Migrations\20190721004359_Post.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1" />

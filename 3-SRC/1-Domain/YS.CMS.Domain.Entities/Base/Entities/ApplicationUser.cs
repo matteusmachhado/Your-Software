@@ -2,7 +2,7 @@
 
 namespace YS.CMS.Domain.Base.Entities
 {
-    public class User : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
 
     }

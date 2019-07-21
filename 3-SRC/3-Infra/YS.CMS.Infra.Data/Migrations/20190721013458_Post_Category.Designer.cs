@@ -10,7 +10,7 @@ using YS.CMS.Infra.Data;
 namespace YS.CMS.Infra.Data.Migrations
 {
     [DbContext(typeof(CMSRepositoryContext))]
-    [Migration("20190714231850_Post_Category")]
+    [Migration("20190721013458_Post_Category")]
     partial class Post_Category
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

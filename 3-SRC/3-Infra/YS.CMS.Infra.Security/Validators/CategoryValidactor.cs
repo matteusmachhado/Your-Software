@@ -8,7 +8,6 @@ namespace YS.CMS.Infra.Security.Validators
         public CategoryValidactor()
         {
             RuleFor(c => c.Name).NotEmpty();
-            RuleFor(c => c.CreateUser).NotEmpty();
         }
     }
 }

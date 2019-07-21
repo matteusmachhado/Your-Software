@@ -1,14 +1,19 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using YS.CMS.Common.Models.Result;
 using YS.CMS.Common.Models.View;
 using YS.CMS.Domain.Base.Entities;
 using YS.CMS.Domain.Base.Interfaces;
 using YS.CMS.Infra.Data;
 using YS.CMS.Infra.Data.Repository;
+using YS.CMS.Infra.Security;
+using YS.CMS.Infra.Security.Manager;
 using YS.CMS.Infra.Security.Validators;
 
 namespace YS.CMS.Infra.DI
@@ -28,6 +33,24 @@ namespace YS.CMS.Infra.DI
             services.AddDbContext<CMSRepositoryContext>(options =>
             {
                 options.UseSqlServer(connectionString);
+            });
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            }).AddJwtBearer("JwtBearer", options => {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("ys-cms-wabapi-authentication-provider-valid")),
+                    ClockSkew = TimeSpan.FromMinutes(30),
+                    ValidIssuer = "YS.CMS.Apps.WebApp",
+                    ValidAudience = "Postman",
+                };
             });
 
             // >_ Repositorys
