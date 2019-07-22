@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +30,7 @@ namespace YS.CMS.Infra.DI
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            services.AddHttpContextAccessor();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<CMSRepositoryContext>(options =>
             {
@@ -37,8 +39,8 @@ namespace YS.CMS.Infra.DI
 
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = "JwtBearer";
-                options.DefaultChallengeScheme = "JwtBearer";
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer("JwtBearer", options => {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -52,6 +54,11 @@ namespace YS.CMS.Infra.DI
                     ValidAudience = "Postman",
                 };
             });
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddUserManager<UserManager>()
+            .AddSignInManager<UserSignInManager>()
+            .AddEntityFrameworkStores<CMSAuthContext>();
 
             // >_ Repositorys
             services.AddTransient<IPost, PostRepositorio>();
