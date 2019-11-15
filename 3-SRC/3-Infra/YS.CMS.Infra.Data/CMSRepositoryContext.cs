@@ -34,7 +34,6 @@ namespace YS.CMS.Infra.Data
                 .WithMany(s => s.Categories)
                 .HasForeignKey(sc => sc.PostId);
 
-
             modelBuilder.Entity<PostCategory>()
                 .HasOne<Category>(sc => sc.Category)
                 .WithMany(s => s.Posts)

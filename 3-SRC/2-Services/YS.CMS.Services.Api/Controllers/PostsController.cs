@@ -23,18 +23,12 @@ namespace YS.CMS.Services.Api.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IPost _repos;
-        private readonly ICategory _reposCategory;
         private readonly IMapper _mapper;
-        private readonly IHttpContextAccessor _accessor;
-        private readonly UserManager _userManager;
 
-        public PostsController(IPost repos, IMapper mapper, ICategory reposCategory, IHttpContextAccessor accessor, UserManager userManager)
+        public PostsController(IPost repos, IMapper mapper)
         {
             _repos = repos;
-            _reposCategory = reposCategory;
             _mapper = mapper;
-            _accessor = accessor;
-            _userManager = userManager;
         }
 
         [HttpPost]
@@ -42,21 +36,7 @@ namespace YS.CMS.Services.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var test = await _userManager.GetUserAsync(_accessor.HttpContext.User);
-                var currentUser = _accessor.HttpContext.User.Claims;
-
                 var newPost = _mapper.Map<PostViewModel, Post>(modelPost, opt => opt.ConstructServicesUsing(x => new Post(modelPost.Title, modelPost.Title)));
-
-                if (modelPost.Categories.Any())
-                {
-                    var categories = await _reposCategory.FindAllAsync(modelPost.Categories.Where(c => c.HasValue).Select(c => c.Value).ToArray());
-                    if (categories.Any())
-                    {
-                        newPost.AddRangeCategory(categories.ToArray());
-                    }
-                }
-
-                //newPost.SetCreateUser(Guid.Parse(currentUser.Id));
 
                 await _repos.CreateAsync(newPost);
 

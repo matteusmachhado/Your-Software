@@ -39,8 +39,8 @@ namespace YS.CMS.Infra.DI
 
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
             }).AddJwtBearer("JwtBearer", options => {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -54,11 +54,6 @@ namespace YS.CMS.Infra.DI
                     ValidAudience = "Postman",
                 };
             });
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddUserManager<UserManager>()
-            .AddSignInManager<UserSignInManager>()
-            .AddEntityFrameworkStores<CMSAuthContext>();
 
             // >_ Repositorys
             services.AddTransient<IPost, PostRepositorio>();

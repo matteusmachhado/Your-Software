@@ -27,10 +27,10 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _userSignInManager.PasswordSignInAsync(
-                    model.Login, 
+                    model.UserName, 
                     model.Password, 
-                    isPersistent: model.IsPersistent.Value, 
-                    lockoutOnFailure: model.LockoutOnFailure.Value);
+                    isPersistent: model.IsPersistent, 
+                    lockoutOnFailure: true);
 
                 if (result.Succeeded)
                 {

@@ -26,11 +26,11 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Login };
+                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _userSignInManager.SignInAsync(user, isPersistent: model.IsPersistent.Value);
+                    await _userSignInManager.SignInAsync(user, isPersistent: model.IsPersistent.HasValue);
                     return Ok();
                 }
                 return BadRequest(new { Description = "Error in create user." }); // >_ Erro genérico por segurança.

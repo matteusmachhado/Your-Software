@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Middlewares\**" />
     <Compile Remove="wwwroot\**" />
+    <Content Remove="Middlewares\**" />
     <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="Middlewares\**" />
     <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="Middlewares\**" />
     <None Remove="wwwroot\**" />
   </ItemGroup>
 
@@ -25,10 +29,6 @@
     <ProjectReference Include="..\..\1-Domain\YS.CMS.Domain.Entities\YS.CMS.Domain.csproj" />
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.CrossCutting\YS.CMS.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\..\3-Infra\YS.CMS.Infra.DI\YS.CMS.Infra.DI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Middlewares\" />
   </ItemGroup>
 
 </Project>

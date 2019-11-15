@@ -14,7 +14,7 @@ namespace YS.CMS.Infra.Security.Handler
         {
             var direitos = new List<Claim>
             {
-                 new Claim(JwtRegisteredClaimNames.Sub, model.Login),
+                 new Claim(JwtRegisteredClaimNames.Sub, model.UserName),
                  new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
