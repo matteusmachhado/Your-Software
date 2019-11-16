@@ -9,9 +9,9 @@ export const AppComponentsRender: StatelessComponent<{}> = () => {
             <div>
                 <Route component={App} />
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/Login" component={Login} />
+                    <Route exact path="/Login" component={Login} />
                     <Route path="/Register" component={Register} />
+                    <Route path="/" component={Home} />
                 </Switch>
             </div>
         </HashRouter>

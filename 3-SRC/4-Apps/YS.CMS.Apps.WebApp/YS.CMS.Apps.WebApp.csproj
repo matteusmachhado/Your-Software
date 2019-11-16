@@ -15,6 +15,7 @@
     <None Remove="Scripts\src\ts\dashboard\Pages\Login.tsx" />
     <None Remove="Scripts\src\ts\interface\IHttpResponse.ts" />
     <None Remove="Scripts\src\ts\dashboard\index.tsx" />
+    <None Remove="Scripts\src\ts\interface\User.ts" />
     <None Remove="Scripts\src\ts\services\RESTService.ts" />
     <None Remove="Scripts\src\ts\templates\basic\components\Title.tsx" />
     <None Remove="Scripts\src\ts\templates\components-render.tsx" />
@@ -49,6 +50,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\Pages\Home\Home.tsx" />
+    <TypeScriptCompile Include="Scripts\src\ts\interface\User.ts" />
     <TypeScriptCompile Include="Scripts\src\ts\interface\IHttpResponse.ts" />
     <TypeScriptCompile Include="Scripts\src\ts\components\Loader\Loader.tsx" />
     <TypeScriptCompile Include="Scripts\src\ts\dashboard\index.tsx" />

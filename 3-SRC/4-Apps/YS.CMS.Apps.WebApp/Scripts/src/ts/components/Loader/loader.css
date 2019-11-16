@@ -1,7 +1,7 @@
-﻿
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+﻿.Loader label {
+    font-weight: 700;
+    float: right;
+    font-size: 30px;
+    text-indent: each-line;
+    color: #867EFF;
 }

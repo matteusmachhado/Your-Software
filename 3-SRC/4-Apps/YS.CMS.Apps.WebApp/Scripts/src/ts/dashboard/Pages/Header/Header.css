@@ -1,3 +1,19 @@
-﻿.icon-header {
-    font-size:20px;
+﻿.bg-nav-custom{
+    background-color: #867EFF;
+}
+
+.bg-nav-custom h5{
+    color:#FFF;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.bg-nav-custom a{
+    color:#FFF;
+    font-weight:400;
+}
+
+.icon-header {
+    font-size: 17px;
+    color: #FFF;
 }

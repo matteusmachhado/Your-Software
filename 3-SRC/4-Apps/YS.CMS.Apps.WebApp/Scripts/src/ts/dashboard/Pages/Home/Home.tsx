@@ -3,6 +3,6 @@ import './Home.css';
 
 export const Home: StatelessComponent<{}> = () => {
     return (
-        <h1>Page Home</h1>    
+        <h1></h1>    
     );
 }
