@@ -39,11 +39,11 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
                             issuer:         _configuration["AppSettings:issuer"], 
                             audience:       _configuration["AppSettings:audience"], 
                             expiresMinutes: double.Parse(_configuration["AppSettings:expiresMinutes"]));
-                    return Ok(token);
+                    return Ok(new { _token = token, ok = true});
                 }
-                return Unauthorized();
+                return BadRequest(new { Login = "Não autorizado." });
             }
-            return BadRequest();
+            return BadRequest(new { Login = "Não autorizado." });
         }
     }
 }

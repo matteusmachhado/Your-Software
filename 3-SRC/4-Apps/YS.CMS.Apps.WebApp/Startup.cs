@@ -29,7 +29,9 @@ namespace YS.CMS.Apps.WebApp
             });
 
             services.AddDependencyInjecion();
-            
+
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -50,6 +52,8 @@ namespace YS.CMS.Apps.WebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseCors(option => option.AllowAnyOrigin());
 
             app.UseMvc(routes =>
             {

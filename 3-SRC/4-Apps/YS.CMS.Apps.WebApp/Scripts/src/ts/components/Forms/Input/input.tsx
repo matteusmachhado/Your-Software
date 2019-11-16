@@ -1,19 +1,39 @@
-import React, { StatelessComponent } from "react";
+import React, { Component } from "react";
 
-interface Props {
+type Props = {
+    name: string;
+    placeholder: string;
+    type: string;
+}
+
+type State = {
     name: string;
     placeholder: string;
     value: string;
-    type: string
+    type: string;
 }
 
-export const Input: StatelessComponent<Props> = (props) => {
-    return (
-        <input type={props.type}
-          name={props.name}
-          className="form-control"
-          placeholder={props.placeholder}
-          value={props.value}
-        />
-  )
+export default class Input extends Component<Props, State>{
+
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            name: '',
+            placeholder: '',
+            type: '',
+            value: ''
+        };
+    }
+
+    render() {
+        return (
+            <input type={this.props.type}
+                name={this.props.name}
+                className="form-control"
+                placeholder={this.props.placeholder}
+                value={this.state.value}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { console.log(e.target.value); }}
+            />
+        )
+    }
 };

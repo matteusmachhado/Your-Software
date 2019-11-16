@@ -26,6 +26,8 @@ namespace YS.CMS.Services.ApiAuthProvider
 
             services.AddSingleton<IConfiguration>(Configuration);
 
+            services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +41,14 @@ namespace YS.CMS.Services.ApiAuthProvider
             {
                 app.UseHsts();
             }
-            
+
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod();
+            });
+
             loggerFactory.AddLog4Net(Configuration.GetValue<string>("Log4NetConfigFile:Name"));
             app.UseHttpsRedirection();
             app.UseMvc();

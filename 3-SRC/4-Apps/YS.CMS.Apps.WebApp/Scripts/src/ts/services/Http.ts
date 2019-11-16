@@ -1,6 +1,7 @@
 ﻿import { IHttpResponse } from '../interface/IHttpResponse';
 
 export const Http = <T>(request: RequestInfo): Promise<IHttpResponse<T>> => {
+    console.log("Request:", request);
     return new Promise((resolve, reject) => {
         let response: IHttpResponse<T>;
         fetch(request)

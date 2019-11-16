@@ -31,7 +31,7 @@ namespace YS.CMS.Services.ApiAuthProvider.Controllers
                 if (result.Succeeded)
                 {
                     await _userSignInManager.SignInAsync(user, isPersistent: model.IsPersistent.HasValue);
-                    return Ok();
+                    return Ok(new { Ok = true, Msg = "Success" });
                 }
                 return BadRequest(new { Description = "Error in create user." }); // >_ Erro genérico por segurança.
             }
