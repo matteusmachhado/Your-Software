@@ -3,7 +3,6 @@ import './List.css';
 import 'bootstrap/js/dist/modal.js';
 import jsImage from './js-flat.png';
 import { setTimeout } from 'timers';
-import SpinnerCircle from './../SpinnerCircle/SpinnerCircle';
 
 type State  = {
     Items: Array<ItemLits>,
@@ -91,7 +90,6 @@ export default class List extends Component<Props, State>
             </>
         );
 
-        if (!this.state.Display) { component = <SpinnerCircle /> } 
 
         return (
             <>

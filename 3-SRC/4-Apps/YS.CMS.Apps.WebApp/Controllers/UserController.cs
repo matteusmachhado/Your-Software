@@ -47,7 +47,7 @@ namespace YS.CMS.Apps.WebApp.Controllers
                     */
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, model.Login),
+                        new Claim(ClaimTypes.Name, model.UserName),
                         new Claim("Token", result.Token) // >_ Guardando o Token
                     };
 

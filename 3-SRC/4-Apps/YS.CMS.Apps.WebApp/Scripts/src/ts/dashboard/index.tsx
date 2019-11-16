@@ -2,8 +2,8 @@
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { hot } from 'react-hot-loader';
-import { AppComponents } from './components/components-render';
+import { AppComponentsRender } from './AppComponentsRender';
 
-var App = hot(module)(AppComponents);
+var App = hot(module)(AppComponentsRender);
 
 ReactDOM.render(<App />, document.querySelector('#dashboard'));
