@@ -50,6 +50,7 @@
 #### npm
 
 ```
+$ git clone https://github.com/matteusmachhado/Your-Software.git
 $ cd YS.CMS.Apps.WebApp
 $ npm install
 ```
